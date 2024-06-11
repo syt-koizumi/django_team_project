@@ -101,10 +101,10 @@ class TMDB:
         return self._json_by_get_request(url)
 
 
-#api = TMDB() # tokenは発行された文字列を代入
-#res = api.search_movies("a")
-#for a in res["results"]:
-#    print(a)
-#    print("===========")
-    
-#pprint(res['results'][0]['vote_average'])
+def gety(movie_name):
+   api = TMDB() 
+   res = api.search_movies(movie_name)
+   reslist = []
+   for a in res["results"]:
+     reslist.append({"title":str(a["original_title"]),"overview":str(a["overview"]),"imagepath":"https://image.tmdb.org/t/p/w500" + str(a["poster_path"])})
+   return reslist

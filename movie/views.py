@@ -6,7 +6,7 @@ from django.views.generic import FormView
 from django.shortcuts import render
 from .forms import MovieSearchForm
 from django.shortcuts import redirect
-from .Api import  TMDB
+from .Api import gety
 from django.urls import reverse_lazy
 from django.views.generic.edit import ModelFormMixin
 #検索結果の一覧を表示するTemplateView
@@ -25,13 +25,6 @@ class MovieSearchView(FormView):
     
     #ここでApiを呼び出す
     def form_valid(self, form):
-        # フォームのデータを取得して、次のビューに渡す
         movie_name = form.cleaned_data['movie_name']
-        data = GetMovieApi(movie_name)
-        return render(self.request, 'movie/movie_search_result.html',{"movie_name":data})
-    
-def GetMovieApi(movie_name):
-    api = TMDB() # tokenは発行された文字列を代入
-    res = api.search_movies(movie_name)
-    return str(res['results'])
-    
+        objectlist = gety(movie_name)
+        return render(self.request,'movie/movie_search_result.html',{"objects":objectlist})
