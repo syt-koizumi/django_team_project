@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>映画検索サイト</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* 追加のスタイルはここに記述 */
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .jumbotron {
+      background-color: #343a40;
+      color: #fff;
+    }
+    #search-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">映画検索サイト</span>
+    <span class="navbar-text">ユーザー名: John Doe</span>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">映画を検索する</h1>
+      <p class="lead">好きな映画を検索してみましょう。</p>
+      <hr class="my-4">
+    
+      <form id = "search-form" method = "post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-lg">検索</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container text-center">
+    <p>&copy; 2024 映画検索サイト</p>
+  </div>
+</footer>
+
+</body>
+</html>
