@@ -51,7 +51,12 @@
         <h1>仮ページ</h1>
     </header>
     <div class="container">
-        <button class="login-btn">ログイン</button>
+        <a href={% url "accounts:login" %}><button class="login-btn">ログイン</button></a>
+        <form action='{% url "accounts:logout" %}' method='post' name='logout'>
+            {% csrf_token %}
+            <input type="submit" value="ログアウト"></input>
+        </form>
+
         <div class="content">
             <p>最新の映画ニュースや人気の映画をチェックして、お気に入りの作品を見つけましょう！</p>
             <h2>最新の映画ニュース</h2>
