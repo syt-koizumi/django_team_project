@@ -41,7 +41,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('メールアドレス', unique=True, )
     age = models.PositiveIntegerField('年齢', default=0)
     is_admin = models.BooleanField('管理者', default=False)
-    is_active = models.BooleanField('有効', default=False)
+    is_active = models.BooleanField('有効', default=True)
     is_staff = models.BooleanField('有効', default=False)
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'username'
