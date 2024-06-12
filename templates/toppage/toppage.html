@@ -55,8 +55,9 @@
         <form action='{% url "accounts:logout" %}' method='post' name='logout'>
             {% csrf_token %}
             <input type="submit" value="ログアウト"></input>
-        </form>
+        </form><br>
 
+        <a href={% url "mypage:mylist" %}><button class="login-btn">マイリスト</button></a>
         <div class="content">
             <p>最新の映画ニュースや人気の映画をチェックして、お気に入りの作品を見つけましょう！</p>
             <h2>最新の映画ニュース</h2>
