@@ -1,1 +1,9 @@
 <p>詳細を表示する</p>
+{% for data in MyMovieModel_data %}
+        <div class="book">
+            <p>{{ data.name }}</p>
+            <p>{{ data.overview }}</p>
+            <p>{{ data.imagepath }}</p>
+            <p>{{ data.createUser }}</p>
+        </div>
+{% endfor %}
