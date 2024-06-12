@@ -14,6 +14,12 @@ from django.shortcuts import redirect, get_object_or_404
 #映画の詳細を表示する
 class MovieDetailView(TemplateView):
     template_name = 'movie/movie_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        overview1 , imagepath1 = MylistApi(context["movie_name"])
+        context.update({"overview": overview1})
+        context.update({"imagepath": imagepath1})
+        return context
 
 
 #検索画面用のビュー
