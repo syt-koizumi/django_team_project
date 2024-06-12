@@ -28,3 +28,10 @@ def gety(movie_name):
      reslist.append({"title":str(a["original_title"]),"overview":str(a["overview"]),"imagepath":"https://image.tmdb.org/t/p/w500" + str(a["poster_path"])})
    return reslist
 
+
+#お気に入りボタンが押されたら呼ばれる
+def MylistApi(movie_name):
+   api = TMDB()
+   res = api.search_movies(movie_name)
+   return str(res["results"][0]["overview"]),"https://image.tmdb.org/t/p/w500"+ str(res["results"][0]["poster_path"])
+     
