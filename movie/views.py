@@ -19,6 +19,11 @@ class MovieDetailView(TemplateView):
         overview1 , imagepath1 = MylistApi(context["movie_name"])
         context.update({"overview": overview1})
         context.update({"imagepath": imagepath1})
+        results = MyMovieModel.objects.filter(name = context["movie_name"],createUser= self.request.user)
+        if results.exists():
+          context.update({"mylist":"t"})
+        else:
+          context.update({"mylist":"f"})
         return context
 
 
