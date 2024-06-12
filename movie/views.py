@@ -32,5 +32,5 @@ class MovieSearchView(FormView):
 def AddMyList(request, name):
     overview1 , imagepath1 = MylistApi(name)#ここでapiをたたいて取得
     MyMovieModel.objects.create(name=name, overview=overview1, imagepath = imagepath1).createUser.set([request.user])#新しいモデルを作成
-    return redirect('movie:movie_search')#検索画面に遷移する
+    return redirect('mypage:mylist')#検索画面に遷移する
 
