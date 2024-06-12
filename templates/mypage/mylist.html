@@ -1,9 +1,76 @@
-<p>詳細を表示する</p>
-{% for data in MyMovieModel_data %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイリスト</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .book {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .book img {
+            width: 150px;
+            height: 200px;
+        }
+
+        .book p {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>マイリスト</h1>
+        <a href={%url "movie:movie_search" %}> <button>検索ページに戻る</button></a>
+    </header>
+    <main>
+        {% for data in MyMovieModel_data %}
         <div class="book">
-            <p>{{ data.name }}</p>
-            <p>{{ data.overview }}</p>
-            <p>{{ data.imagepath }}</p>
-            <p>{{ data.createUser }}</p>
+            <a href={% url "movie:movie_detail" data.name %}>
+                <img src="{{ data.imagepath }}" alt="映画の画像">
+                <p>{{ data.name }}</p>
+            </a>
         </div>
-{% endfor %}
+        {% endfor %}
+
+    </main>
+</body>
+
+</html>

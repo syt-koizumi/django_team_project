@@ -24,8 +24,8 @@ class LoginAuthenticationForm(AuthenticationForm):
                 (" アカウントが無効です "),
                 code='inactive',
             )
-        if not user.is_admin:
-            raise forms.ValidationError(
-            (" 管理者権限を持っていません "),
-            code='notadmin'
-            )
+        # if not user.is_admin:
+        #     raise forms.ValidationError(
+        #     (" 管理者権限を持っていません "),
+        #     code='notadmin'
+        #     )
