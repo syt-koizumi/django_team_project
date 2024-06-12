@@ -6,7 +6,5 @@ class MyMovieModel(models.Model):
     overview = models.CharField('映画の概要', max_length=10000)
     imagepath = models.CharField("映画の画像パス",max_length = 10000)
     createUser = models.ManyToManyField(CustomUser,verbose_name="追加したユーザー")
- 
     def __str__(self):
-        
-           return self.name
+       return self.name

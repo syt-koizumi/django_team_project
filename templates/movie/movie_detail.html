@@ -1,1 +1,8 @@
 <p>詳細を表示する</p>
+<p>{{ movie_name }}</p>
+
+<form action="{% url 'movie:add_mylist' movie_name %}" method="post">
+    <button type="submit" name="button">お気に入り追加</button>
+    {% csrf_token %}
+    
+</form>
