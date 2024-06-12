@@ -6,10 +6,18 @@
 </head>
 <body>
 <h2>ユーザー作成ページ</h2>
+
 <form method="POST">
   {% csrf_token %}
 
-  {{ form.as_p }}
+  <input type="hidden" name="csrfmiddlewaretoken" value="F7ihTR0XZsujD2qXSaQ7SStFq1GqnIr9QkgSKNumcMEfZrEgzCBXIx91GfoxAarC">
+
+  <p><label for="id_username">ユーザー名:</label> <input type="text" name="username" maxlength="100" autofocus="" required="" id="id_username"></p>
+<p><label for="id_email">メールアドレス:</label> <input type="email" name="email" maxlength="254" required="" id="id_email"></p>
+<p><label for="id_age">年齢:</label> <input type="number" name="age" value="0" min="0" required="" id="id_age"></p>
+<p><label for="id_is_active">有効:</label> <input type="checkbox" name="is_active" id="id_is_active"></p>
+<p><label for="id_password1">パスワード:</label> <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1"> <span class="helptext"></span></p><p></p>
+<p><label for="id_password2">パスワード(確認用):</label> <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2"> </p>
   <input type="submit" id="save" value="作成">
 </form>
 </body>

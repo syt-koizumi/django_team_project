@@ -1,1 +1,18 @@
-<p>詳細を表示する</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mylist</title>
+</head>
+<body>
+    {% for object in objects %}
+    <div class="book">
+            <img src="{{ object.imagepath}}" alt="本の画像">
+            <p>{{ object.title}}</p>
+        </a>
+    </div>
+    {% endfor %}
+    
+</body>
+</html>

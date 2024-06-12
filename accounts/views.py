@@ -7,20 +7,6 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic.base import TemplateView
 
 
-class AccountCreateView(generic.CreateView):
-    Model = User
-    form_class = UserCreationForm
-    template_name = 'accounts/accounts_create.html'
-    success_url = "/accounts/accounts_create"
-
-
-class AccountCreateViewUsingMyForm(generic.CreateView):
-    Model = User
-    form_class = MyUserCreationForm
-    template_name = 'accounts/accounts_create.html'
-    success_url = "/accounts/accounts_create_with_form"
-
-
 class CustomAccountCreationView(generic.CreateView):
     Model = CustomUser
     form_class = CustomUserCreationForm
