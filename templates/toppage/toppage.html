@@ -1,79 +1,24 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お気に入りの映画検索</title>
-    <style>
-        /* CSS スタイルはここに追加 */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        .login-btn {
-            float: right;
-            margin-top: -40px;
-            margin-right: 20px; /* マージンを追加 */
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .login-btn:hover {
-            background-color: #0056b3;
-        }
-        .content {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        /* その他のスタイルは必要に応じて追加してください */
-    </style>
-</head>
-<body>
-    <header>
-        <h1>仮ページ</h1>
-    </header>
-    <div class="container">
-        <a href={% url "accounts:login" %}><button class="login-btn">ログイン</button></a>
-        <form action='{% url "accounts:logout" %}' method='post' name='logout'>
-            {% csrf_token %}
-            <input type="submit" value="ログアウト"></input>
-        </form><br>
+{% extends 'base.html' %}
 
-        <a href={% url "mypage:mylist" %}><button class="login-btn">マイリスト</button></a>
-        <div class="content">
-            <p>最新の映画ニュースや人気の映画をチェックして、お気に入りの作品を見つけましょう！</p>
-            <h2>最新の映画ニュース</h2>
-            <a href={% url "movie:movie_search" %}><button class="login-btn">映画を検索する</button></a>
-            <ul>
-                <li>ニュース1のタイトル</li>
-                <li>ニュース2のタイトル</li>
-                <li>ニュース3のタイトル</li>
-            </ul>
-            <h2>人気の映画</h2>
-            <ul>
-                <li>映画1のタイトル</li>
-                <li>映画2のタイトル</li>
-                <li>映画3のタイトル</li>
-            </ul>
-        </div>
+{% block header %}
+    <h1>お気に入りの映画検索</h1>
+{% endblock header %}
+
+{% block content %}
+    <div class="content">
+        <p>最新の映画ニュースや人気の映画をチェックして、お気に入りの作品を見つけましょう！</p>
+        <h2>最新の映画ニュース</h2>
+        <a href="{% url 'movie:movie_search' %}" class="btn btn-primary mb-3">映画を検索する</a>
+        <ul class="list-group mb-3">
+            <li class="list-group-item">ニュース1のタイトル</li>
+            <li class="list-group-item">ニュース2のタイトル</li>
+            <li class="list-group-item">ニュース3のタイトル</li>
+        </ul>
+        <h2>人気の映画</h2>
+        <ul class="list-group">
+            <li class="list-group-item">映画1のタイトル</li>
+            <li class="list-group-item">映画2のタイトル</li>
+            <li class="list-group-item">映画3のタイトル</li>
+        </ul>
     </div>
-</body>
-</html>
+{% endblock content %}
