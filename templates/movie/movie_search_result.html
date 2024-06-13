@@ -1,64 +1,87 @@
 {% extends 'base.html' %}
 {% block content %}
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+ 
+<style>
+    main {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+    }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
+    main {
+        padding: 20px;
+    }
 
-        main {
-            padding: 20px;
-        }
+    h2 {
+        text-align: center;
+        margin-top: 0;
+    }
 
-        .book {
-            display: inline-block;
-            margin: 10px;
-            text-align: center;
-        }
+    .book-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
 
-        .book img {
-            width: 150px;
-            height: 200px;
-        }
+    .book {
+        width: 200px;
+        margin: 20px 10px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
 
-        .book p {
-            font-size: 14px;
-            margin-top: 5px;
-        }
+    .book:hover {
+        transform: translateY(-5px);
+    }
 
-        button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-    </style>
+    .book a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+    }
 
-    <main>
-        <h2>検索結果一覧</h2>
+    .book img {
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        
+    }
+
+    .book-info {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .book p {
+        font-size: 12px;
+        margin-top: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+</style>
+
+<main>
+    <h2>検索結果一覧</h2>
+    <ul class="book-list">
         {% for l in objects %}
-        <div class="book">
+        <li class="book">
             <a href={% url "movie:movie_detail" l.title %}>
-                <img src="{{ l.imagepath}}" alt="本の画像">
-                <p>{{ l.title}}</p>
+                <img src="{{ l.imagepath }}" alt="本の画像">
+                <div class="book-info">
+                    <p>{{ l.title }}</p>
+                </div>
             </a>
-        </div>
+        </li>
         {% endfor %}
-
-    </main>
-    {% endblock %}
+    </ul>
+</main>
+{% endblock %}
