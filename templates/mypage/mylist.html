@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends 'base.html' %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイリスト</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,13 +49,6 @@
             border-radius: 5px;
         }
     </style>
-</head>
-
-<body>
-    <header>
-        <h1>マイリスト</h1>
-        <a href={%url "movie:movie_search" %}> <button>検索ページに戻る</button></a>
-    </header>
     <main>
         {% for data in MyMovieModel_data %}
         <div class="book">
@@ -71,6 +60,4 @@
         {% endfor %}
 
     </main>
-</body>
-
-</html>
+    {% endblock %}

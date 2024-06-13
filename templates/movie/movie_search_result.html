@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>映画を検索するサイト</title>
+{% extends 'base.html' %}
+{% block content %}
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,13 +48,7 @@
             border-radius: 5px;
         }
     </style>
-</head>
 
-<body>
-    <header>
-        <h1>映画を検索するサイト</h1>
-        <a href={%url "mypage:mylist" %}> <button>マイページに行く</button></a>
-    </header>
     <main>
         <h2>検索結果一覧</h2>
         {% for l in objects %}
@@ -72,6 +61,4 @@
         {% endfor %}
 
     </main>
-</body>
-
-</html>
+    {% endblock %}

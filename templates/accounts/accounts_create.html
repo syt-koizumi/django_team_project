@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
+{% extends 'base.html' %}
+{% block content %}
   <title>{% block title %}アカウント登録{% endblock %}</title>
 </head>
 <body>
@@ -12,5 +10,5 @@
   {{ form.as_p }}
   <input type="submit" id="save" value="作成">
 </form>
-</body>
-</html>
+{% endblock %}
+

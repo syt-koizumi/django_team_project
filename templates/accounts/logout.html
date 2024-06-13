@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>aaaa</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 <h2> ログアウトしました </h2>
 <h3>ログインはこちら↓</h3>
 <form method="post" action="">
@@ -12,5 +7,4 @@
     {{ form.as_p }}
     <input type="submit" id="save" value=" ログイン ">
 </form>
-</body>
-</html>
+{% endblock %}
