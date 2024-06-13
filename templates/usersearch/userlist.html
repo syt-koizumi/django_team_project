@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">ユーザーを検索する</h1>
+      <hr class="my-4">
+    
+      <form id = "search-form" method = "get" action='{% url "usersearch:usersearchresult" %}'>
+        {% csrf_token %}
+        <input id="username" type="text">
+        <button type="submit" class="btn btn-primary btn-lg">検索</button>
+      </form>
+      
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container text-center">
+    <p>&copy; 2024 映画検索サイト</p>
+  </div>
+</footer>
+
+
+{% endblock %}

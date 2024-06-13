@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <main>
+        <h2>検索結果一覧</h2>
+        <p>{{ objects }}</p>
+        {% for object in objects %}
+        <div class="book">
+            <p>{{ objects }}</p>
+        </div>
+        {% endfor %}
+
+    </main>
+
+{% endblock %}
