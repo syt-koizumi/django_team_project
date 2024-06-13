@@ -5,16 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'base.css' %}">
-    <title>Document</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
     <header>
-
-    <div class="logo">
-        <a href='{% url "toppage:toppage" %}'><img src="img_folder/movie_icon.jpeg" alt="トップページに戻る"></a>
-    </div>
     <div class="menu-list">
         <ul class="menu">
+            <li><a href='{% url "toppage:toppage" %}'><img src="{% static 'img_folder/movie_icon.jpeg' %}" alt="トップページへ"></a></li>
             <li><a href='{% url "accounts:custom_accounts_create" %}'>ユーザ登録</a></li>
             <li><a href='{% url "movie:movie_search" %}'>映画検索</a></li>
             <li><a href='{% url "mypage:mylist" %}'>マイリスト</a></li>
@@ -38,7 +35,6 @@
     </div>
 </header>
     {% block content %}
-
     {% endblock %}
 </body>
 </html>
