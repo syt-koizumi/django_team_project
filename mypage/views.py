@@ -4,7 +4,7 @@ from movie.models import MyMovieModel
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
-
+from django.http import Http404
     
     
 class MylistView(LoginRequiredMixin, TemplateView):
@@ -24,12 +24,15 @@ class DeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'mypage/delete.html'
     success_url = reverse_lazy('mypage:mylist')
     
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        if self.request.user == self.object.createUser:
-            return super().get(request, *args, **kwargs)
-        else:
-            #return super().get(request, *args, **kwargs)
-            raise PermissionDenied('nooooooo')
-        
-    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        # ログインユーザーのオブジェクトのみを返す
+        return queryset.filter(createUser=self.request.user, id=self.kwargs['pk'])
+
+    def get_object(self, queryset=None):
+        # 削除するオブジェクトを取得する
+        obj = super().get_object(queryset)
+        if obj is None:
+            # オブジェクトが存在しない場合は404エラーを返す
+            raise Http404("オブジェクトが見つかりません")
+        return obj
