@@ -66,8 +66,12 @@
             <a href={% url "movie:movie_detail" data.name %}>
                 <img src="{{ data.imagepath }}" alt="映画の画像">
                 <p>{{ data.name }}</p>
+                <p>{{ data.pk }}</p>
             </a>
         </div>
+
+        <button><a href={% url "mypage:delete" data.pk %}>削除</a></button>
+
         {% endfor %}
 
     </main>
