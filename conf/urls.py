@@ -8,5 +8,5 @@ urlpatterns = [
     path("accounts/",include("accounts.urls")),
     path("mypage/",include("mypage.urls")),
     path("movie/",include("movie.urls")),
-   # path("usersearch",include("usersearch.urls")),
+    path("usersearch/",include("usersearch.urls")),
 ]

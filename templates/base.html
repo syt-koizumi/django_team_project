@@ -59,7 +59,7 @@ header {
                 <li><a href='{% url "accounts:custom_accounts_create" %}'>ユーザ登録</a></li>
                 <li><a href='{% url "movie:movie_search" %}'>映画検索</a></li>
                 <li><a href='{% url "mypage:mylist" %}'>マイリスト</a></li>
-                <li><a href="">ユーザー一覧</a></li>
+                <li><a href='{% url "usersearch:usersearch" %}''>ユーザー一覧</a></li>
                 {% if user.is_authenticated %}
                 <li><p> ログイン中のユーザー: {{ user.get_username }}</p></li>
                 <li>
