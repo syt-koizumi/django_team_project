@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+
+header {
+    background-color: #e0ffff;
+    padding: 10px;
+}
+
+.menu{
+    display: flex;
+}
+
+li{
+    list-style: none;
+    margin-left: 20px;
+}
+
+  

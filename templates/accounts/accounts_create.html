@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}アカウント登録{% endblock %}
 {% block content %}
-  <title>{% block title %}アカウント登録{% endblock %}</title>
-</head>
-<body>
+
 <h2>ユーザー作成ページ</h2>
 <form method="POST">
   {% csrf_token %}
@@ -10,5 +10,6 @@
   {{ form.as_p }}
   <input type="submit" id="save" value="作成">
 </form>
+<link rel="stylesheet" href="{% static 'accounts_create.css' %}">
 {% endblock %}
 

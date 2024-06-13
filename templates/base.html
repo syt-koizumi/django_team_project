@@ -4,59 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        /* ヘッダー全体のスタイル */
-header {
-    background-color: #333; /* ヘッダーの背景色 */
-    color: #fff; /* テキストの色 */
-    padding: 10px; /* 上下左右の余白 */
-    display: flex; /* フレックスレイアウトを使用して要素を並べる */
-    justify-content: space-between; /* 要素をヘッダー内で均等に配置 */
-    align-items: center; /* 要素を垂直方向に中央に配置 */
-}
-
-/* ロゴのスタイル */
-.logo img {
-    width: 50px; /* ロゴの幅 */
-    height: auto; /* ロゴの高さを自動調整 */
-}
-
-/* メニューリストのスタイル */
-.menu-list ul {
-    list-style-type: none; /* リストのマーカーをなしにする */
-    padding: 0; /* リストの余白をなくす */
-    margin: 0; /* リストの外側の余白をなくす */
-    display: flex; /* フレックスレイアウトを使用して要素を並べる */
-}
-
-.menu-list li {
-    margin-right: 20px; /* メニューアイテムの右側の余白 */
-}
-
-.menu-list li:last-child {
-    margin-right: 0; /* 最後のメニューアイテムの右側の余白をなくす */
-}
-
-.menu-list li a {
-    text-decoration: none; /* リンクの下線をなくす */
-    color: #fff; /* リンクの色 */
-}
-
-.menu-list li a:hover {
-    color: #ffd700; /* リンクにマウスを重ねたときの色 */
-}
-
-    </style>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
     <header>
-
-    <div class="logo">
-        <a href='{% url "toppage:toppage" %}'><img src="img_folder/movie_icon.jpeg" alt="トップページに戻る"></a>
-    </div>
     <div class="menu-list">
         <ul class="menu">
+            <li><a href='{% url "toppage:toppage" %}'><img src="{% static 'img_folder/movie_icon.jpeg' %}" alt="トップページへ"></a></li>
             <li><a href='{% url "accounts:custom_accounts_create" %}'>ユーザ登録</a></li>
             <li><a href='{% url "movie:movie_search" %}'>映画検索</a></li>
             <li><a href='{% url "mypage:mylist" %}'>マイリスト</a></li>
@@ -80,7 +35,6 @@ header {
     </div>
 </header>
     {% block content %}
-
     {% endblock %}
 </body>
 </html>
