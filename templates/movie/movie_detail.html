@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>映画を検索するサイト</title>
+{% extends 'base.html' %}
+{% block content %}
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,11 +48,6 @@
             border-radius: 5px;
         }
     </style>
-</head>
-<body>
-<header>
-    <h1>詳細ページ</h1>
-</header>
 <div class="book">
         <img src="{{ imagepath }}" alt="本の画像">
         <p>{{ movie_name}}</p>
@@ -73,4 +63,4 @@
 {% else %}
 <p>すでにマイリストに追加済み</p>
 {% endif %}
-</body>
+{% endblock %}
