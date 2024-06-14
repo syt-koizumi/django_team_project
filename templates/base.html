@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="icon" href="{% static 'img_folder/logo.ico' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
     <header class="header">
         <div class="taitlelogo">
-            <a href='{% url "toppage:toppage" %}'><img id="home" src="{% static 'img_folder/logo.jpg' %}" alt="トップページへ"></a>
+            <a href='{% url "toppage:toppage" %}'><img src="{% static 'img_folder/logo.jpg' %}" alt="トップページへ"></a>
         </div>
         <div class="menu-list">
             <ul class="menu">
