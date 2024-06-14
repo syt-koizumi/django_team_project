@@ -8,32 +8,35 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <header>
-    <div class="menu-list">
-        <ul class="menu">
-            <li><a href='{% url "toppage:toppage" %}'><img src="{% static 'img_folder/movie_icon.jpeg' %}" alt="トップページへ"></a></li>
-            <li><a href='{% url "accounts:custom_accounts_create" %}'>ユーザ登録</a></li>
-            <li><a href='{% url "movie:movie_search" %}'>映画検索</a></li>
-            <li><a href='{% url "mypage:mylist" %}'>マイリスト</a></li>
-            <li><a href="">ユーザー一覧</a></li>
-            {% if user.is_authenticated %}
-            <li><span>{{ user.get_username }}</span> </li>
-            <li>
-                <form action='{% url "accounts:logout" %}' method='post' name='logout'>
+    <header class="header">
+        <div class="taitlelogo">
+            <a href="#" class="btn_09"><span><span>BUTTON</span>BUTTON</span></a>
+            <a href='{% url "toppage:toppage" %}'><img id="home" src="{% static 'img/movie_icon.jpeg' %}" alt="トップページへ"></a>
+        </div>
+        <div class="menu-list">
+            <ul class="menu">
+                <li><a href='{% url "accounts:custom_accounts_create" %}'>アカウント登録</a></li>
+                <li><a href='{% url "movie:movie_search" %}'>映画検索</a></li>
+                <li><a href='{% url "mypage:mylist" %}'>マイリスト</a></li>
+                <li><a href="">アカウント一覧</a></li>
+                {% if user.is_authenticated %}
+                <li><span>{{ user.get_username }}</span> </li>
+                <li>
+                    <form action='{% url "accounts:logout" %}' method='post' name='logout'>
+                        {% csrf_token %}
+                        <input type="submit" value="ログアウト">
+                    </form>
+                </li>
+                {% else %}
+                <li>
+                <form action='{% url "accounts:login" %}' method='post' name='logout'>
                     {% csrf_token %}
-                    <input type="submit" value="ログアウト">
-                </form>
-            </li>
-            {% else %}
-            <li>
-            <form action='{% url "accounts:login" %}' method='post' name='logout'>
-                {% csrf_token %}
-                <input type="submit" value="ログイン">
-            </form></li>
-            {% endif %}
-        </ul>
-    </div>
-</header>
+                    <input type="submit" value="ログイン">
+                </form></li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
     {% block content %}
     {% endblock %}
 </body>
