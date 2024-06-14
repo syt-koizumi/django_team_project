@@ -30,6 +30,7 @@
                 {% else %}
                 <li>
                 <form action='{% url "accounts:login" %}' method='post' name='logout'>
+
                     {% csrf_token %}
                     <input type="submit" value="ログイン">
                 </form></li>

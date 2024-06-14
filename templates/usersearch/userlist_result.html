@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-
-
     <main>
         <h2>検索結果一覧</h2>
-        <p>{{ objects }}</p>
-        {% for object in objects %}
-        <div class="book">
-            <p>{{ objects }}</p>
-        </div>
-        {% endfor %}
-
+        {% if objects %}
+            {% for user in objects %}
+                <p>{{ user.username }}</p>
+            {% empty %}
+                <p>該当するユーザーが見つかりませんでした。</p>
+            {% endfor %}
+        {% else %}
+            <p>検索結果がありません。</p>
+        {% endif %}
     </main>
-
 {% endblock %}

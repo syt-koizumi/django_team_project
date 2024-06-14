@@ -1,39 +1,90 @@
 {% extends 'base.html' %}
 {% block content %}
-
-  <style>
-    /* 追加のスタイルはここに記述 */
+<style>
     body {
-      background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
     }
+
     .container {
-      margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
     }
+
     .jumbotron {
-      background-color: #343a40;
-      color: #fff;
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
     }
-    #search-input {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
+
+    .display-4 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #333;
     }
-  </style>
+
+    .lead {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    hr {
+        width: 50%;
+        margin: 20px auto;
+        border-color: #ccc;
+    }
+
+    form {
+        margin-bottom: 0;
+    }
+
+    form input[type="text"] {
+        width: 80%; /* 入力欄の幅を調整 */
+        padding: 12px 20px;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+    }
+
+    button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        margin-bottom:20px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
 
 <main>
-  <div class="container">
-    <div class="jumbotron">
-      <h1 class="display-4">映画を検索する</h1>
-      <p class="lead">好きな映画を検索してみましょう。</p>
-      <hr class="my-4">
-    
-      <form id = "search-form" method = "post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary btn-lg">検索</button>
-      </form>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">映画を検索する</h1>
+            <p class="lead">好きな映画を検索してみましょう。</p>
+            <hr class="my-4">
+        
+            <form id="search-form" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary btn-lg">検索</button>
+            </form>
+        </div>
     </div>
-  </div>
 </main>
-
 {% endblock %}

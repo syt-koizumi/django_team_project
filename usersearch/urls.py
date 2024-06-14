@@ -8,6 +8,6 @@ app_name = 'usersearch'
 urlpatterns = [
     
     path('', UserSearchView.as_view(),name = "usersearch"),
-    path("result/",UserSearchResultView.as_view(),name ="usersearchresult")
+    path("search/",UserSearchResultView.as_view(),name ="usersearchresult")
 
 ]
