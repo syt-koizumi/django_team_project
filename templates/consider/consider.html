@@ -1,171 +1,150 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<form id="considerForm" method = "GET" action="{% url 'consider:result' %}" >
+    <div class="q1" style="display:block">
+        <p>ホラー映画を見たいですか？</p>
+        <label>
+            <input type="radio" name="q1" value="yes">
+            はい
+          </label>
+          <label>
+            <input type="radio" name="q1" value="no">
+            いいえ
+          </label>
+    </div>
+    <div class="q2" style="display:none">
+        <p>アクション映画を見たいですか？</p>
+        <label>
+            <input type="radio" name="q2" value="yes">
+            はい
+          </label>
+          <label>
+            <input type="radio" name="q2" value="no">
+            いいえ
+          </label>
+    </div>
+    <div class="q3" style="display:none">
+        <p>ホラー映画を見たいですか？</p>
+        <label>
+            <input type="radio" name="q3" value="yes">
+            はい
+          </label>
+          <label>
+            <input type="radio" name="q3" value="no">
+            いいえ
+          </label>
+    </div>
+    <div class="q4" style="display:none">
+        <p>ホラー映画を見たいですか？</p>
+        <label>
+            <input type="radio" name="q4" value="yes">
+            はい
+          </label>
+          <label>
+            <input type="radio" name="q4" value="no">
+            いいえ
+          </label>
+    </div>
+    <div class="q5" style="display:none">
+        <p>ホラー映画を見たいですか？</p>
+        <label>
+            <input type="radio" name="q5" value="yes">
+            はい
+          </label>
+          <label>
+            <input type="radio" name="q5" value="no">
+            いいえ
+          </label>
+    </div>
+    <button class= "q6" type="submit"  style="display:none">結果を見る</button>
+</form>
 
-<main>
-<p>テスト</p>
+<button class= "q5" onclick="nextStep()" style="display:block">次へ</button>
+<script>
+    let step = 0;
+    function nextStep() {
+        step += 1;
+        document.getElementsByClassName('q' + step)[0].style.display = "none";
+        document.getElementsByClassName('q' + (step + 1))[0].style.display = 'block';
+        if(step==5){
+            document.getElementsByClassName('q' + step)[1].style.display = "none";
+        }
+
+    }
+
+   
+</script>
 <style>
     body {
-        font-family: Arial, sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
     }
-    #quiz-container {
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: center;
-    }
-</style>
-<button type="submit">結果を見る</button>
-<div id="quiz-container">
-    <h2>Quiz</h2>
-    <div id="question"></div>
-    <div id="choices"></div>
   
-    <div id="result"></div>
-</div>
-<script>
-
-
-let score = [];
-let horror = ["スリラーブラウン管"]
-let action = ["Mad Max: Fury Road"]
-let renai = ["Roman Holiday"]
-let anim = ["Minions: The Rise of Gru"]
-let sf = ["Harry Potter and the Philosopher's Stone"]
-let mystery = ["Der Mann, der Sherlock Holmes war"]
-let adventure = ["Jungle Cruise"]
-let comedy = ["Ted"]
-
-
-
-
-const questions = [
-    {
-        question: "あなたにおすすめの映画を探します。",
-        choices: ["スタートする"],
-        answer: "スタートする"
-    },
-    {
-        question: "ホラー映画は見たい?",
-        choices: ["はい", "いいえ"],
-        answer: "はい"
-    },
-    {
-        question: "アクション映画は見たい?",
-        choices: ["はい", "いいえ"],
-        answer: "はい"
-    },
-    {
-        question: "アニメ映画は見たい?",
-        choices: ["はい", "いいえ"],
-        answer: "はい"
-    },
-    {
-        question: "恋愛映画は見たい?",
-        choices: ["はい", "いいえ"],
-        answer: "はい"
-    },
-    {
-        question: "ミステリー映画は見たい?",
-        choices: ["はい", "いいえ"],
-        answer: "はい"
-    },
-    {
-        question: "アドベンチャー映画は見たい?",
-        choices: ["はい", "いいえ"],
-        answer: "はい"
-    },
-    {
-        question: "コメディ映画は見たい?",
-        choices: ["はい", "いいえ"],
-        answer: "はい"
-    },
-    {
-        question: "SF映画は見たい?",
-        choices: ["はい", "いいえ"],
-        answer: "はい"
-    },
-    // Add more questions here
-];
-
-let currentQuestion = 0;
-function displayQuestion() {
-    const questionElement = document.getElementById("question");
-    const choicesElement = document.getElementById("choices");
-
-    questionElement.textContent = questions[currentQuestion].question;
-    choicesElement.innerHTML = "";
-
-    questions[currentQuestion].choices.forEach(choice => {
-        const button = document.createElement("button");
-        button.textContent = choice;
-        button.onclick = function() {
-            check(choice);
-        };
-        choicesElement.appendChild(button);
-    });
-}
-
-function check(choice) {
-    if(choice=="スタートする"){
-        score.push("スタート")
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    else if (choice === questions[currentQuestion].answer) {
-        if(questions[currentQuestion].question == "ホラー映画は見たい?"){
-            score.push(horror);
-        }
-        else if(questions[currentQuestion].question == "アクション映画は見たい?"){
-            score.push(action);
-        }
-        else if(questions[currentQuestion].question == "アニメ映画は見たい?"){
-            score.push(anim);
-        }
-        else if(questions[currentQuestion].question == "恋愛映画は見たい?"){
-            score.push(renai);
-        }
-        else if(questions[currentQuestion].question == "ミステリー映画は見たい?"){
-            score.push(mystery);
-        }
-        else if(questions[currentQuestion].question == "アドベンチャー映画は見たい?"){
-            score.push(adventure);
-        }
-        else if(questions[currentQuestion].question == "コメディ映画は見たい?"){
-            score.push(comedy);
-        }
-        else if(questions[currentQuestion].question == "SF映画は見たい?"){
-            score.push(sf);
-        }
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
     }
-    currentQuestion++;
-    if (currentQuestion < questions.length) {
-        displayQuestion();
-    } else {
-        showResult();
+  
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      display:flex;
+      text-align: center;
+      justify-content: center;
     }
-}
+  
+    .question {
+      margin-bottom: 20px;
+    }
+  
+    label {
+      margin-bottom: 10px;
+      font-size: 18px;
 
-let resultUrl;
-function showResult() {
-    const quizContainer = document.getElementById("quiz-container");
-    if (score.length <= 0){
-        quizContainer.innerHTML = `<h2>おすすめは見つかりませんでした</h2>`;
-    }else{
-        let ransu = Math.floor(Math.random() * (score.length - 1)) + 1;
-        quizContainer.innerHTML = `<h2>あなたにおすすめの映画は</h2>
-        <form id="search-form" method="post">
-                {% csrf_token %}
-                <input type="text" value=${score[ransu]}>
-                <button type="submit" class="btn btn-primary btn-lg">検索</button>
-            </form>`;
-       
-    };
     }
+  
    
+  
+    /* input[type="radio"]を非表示にしているので、代わりにlabelの前に表示する */
+    input[type="radio"] + label::before {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      border: 2px solid #3498db;
+      border-radius: 50%;
+    }
+  
 
-displayQuestion();
-</script>
-
-
-</main>
+    input[type="radio"]:checked + label::before {
+      background-color: #3498db;
+    }
+  
+    button {
+      width: 200px;
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+  
+    button:hover {
+      background-color: #2980b9;
+    }</style>
 {% endblock %}
 
 

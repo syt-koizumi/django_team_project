@@ -12,7 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 
 #映画の詳細を表示する
-class MovieDetailView(TemplateView):
+class MovieDetailView(LoginRequiredMixin,TemplateView):
     template_name = 'movie/movie_detail.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
