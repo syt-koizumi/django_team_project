@@ -1,0 +1,10 @@
+let horror = ["スリラーブラウン管"]
+let action = ["Mad Max: Fury Road"]
+let renai = ["Roman Holiday"]
+let anim = ["Minions: The Rise of Gru"]
+let sf = ["Harry Potter and the Philosopher's Stone"]
+let mystery = ["Der Mann, der Sherlock Holmes war"]
+let adventure = ["Jungle Cruise"]
+let comedy = ["Ted"]
+
+このテキストファイルにリスト形式で追加していって、htmlの<script>タグの中にコピペで反映させる

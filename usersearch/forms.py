@@ -1,7 +1,7 @@
 from django import forms
 
 class UserSearchForm(forms.Form):
-    user_name = forms.CharField(label='ユーザー名')
+    username = forms.CharField(label='ユーザー名')
     #results1 = forms.CharField(label="検索結果")
 
 
