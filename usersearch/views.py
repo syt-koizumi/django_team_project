@@ -1,4 +1,4 @@
-from django.views.generic import FormView, DetailView
+from django.views.generic import FormView, DetailView, ListView
 from accounts.models import CustomUser
 from movie.models import MyMovieModel
 from .forms import UserSearchForm
@@ -29,6 +29,7 @@ class UserMoviesView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["username"] = "aaaaa"
         context['movies'] = MyMovieModel.objects.filter(createUser=self.object)
         return context
 

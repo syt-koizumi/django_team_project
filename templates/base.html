@@ -20,7 +20,7 @@
                 <li><a href='{% url "mypage:mylist" %}'>マイリスト</a></li>
                 <li><a href='{% url "usersearch:user_search" %}'>アカウント一覧</a></li>
                 {% if user.is_authenticated %}
-                <li><span>{{ user.get_username }}</span> </li>
+                <li><span>{{ user.get_username }}</span></li>
                 <li>
                     <form action='{% url "accounts:logout" %}' method='post' name='logout'>
                         {% csrf_token %}

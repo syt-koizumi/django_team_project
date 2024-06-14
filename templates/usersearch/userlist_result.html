@@ -1,8 +1,45 @@
 <!-- user_movies.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="icon" href="{% static 'img_folder/logo.ico' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header class="header">
+        <div class="taitlelogo">
+            <a href='{% url "toppage:toppage" %}'><img src="{% static 'img_folder/logo.jpg' %}" alt="トップページへ"></a>
+        </div>
+        <div class="menu-list">
+            <ul class="menu">
+                <li><a href='{% url "accounts:custom_accounts_create" %}'>アカウント登録</a></li>
+                <li><a href='{% url "movie:movie_search" %}'>映画検索</a></li>
+                <li><a href='{% url "mypage:mylist" %}'>マイリスト</a></li>
+                <li><a href='{% url "usersearch:user_search" %}'>アカウント一覧</a></li>
+                {% if user.is_authenticated %}
+                <li><span>{{ user.get_username }}</span><span>の映画リストを閲覧中です</span></li>
+                <li>
+                    <form action='{% url "accounts:logout" %}' method='post' name='logout'>
+                        {% csrf_token %}
+                        <input type="submit" value="ログアウト">
+                    </form>
+                </li>
+                {% else %}
+                <li>
+                <form action='{% url "accounts:login" %}' method='post' name='logout'>
 
-{% extends "base.html" %}
+                    {% csrf_token %}
+                    <input type="submit" value="ログイン" class="login-button">
+                </form></li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
 
-{% block content %}
 <style>
   body {
       font-family: Arial, sans-serif;
@@ -51,6 +88,10 @@
       border-radius: 5px;
   }
 </style>
+
+
+
+
   <h1>{{ user.username }}'s Movies</h1>
   <ul>
     {% for movie in movies %}
@@ -63,4 +104,6 @@
       
     {% endfor %}
   </ul>
-{% endblock %}
+
+</body>
+</html>
