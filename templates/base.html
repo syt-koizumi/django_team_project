@@ -17,7 +17,7 @@
                 <li><a href='{% url "accounts:custom_accounts_create" %}'>アカウント登録</a></li>
                 <li><a href='{% url "movie:movie_search" %}'>映画検索</a></li>
                 <li><a href='{% url "mypage:mylist" %}'>マイリスト</a></li>
-                <li><a href="">アカウント一覧</a></li>
+                <li><a href='{% url "usersearch:user_search" %}'>アカウント一覧</a></li>
                 {% if user.is_authenticated %}
                 <li><span>{{ user.get_username }}</span> </li>
                 <li>
