@@ -10,7 +10,6 @@
 <body>
     <header class="header">
         <div class="taitlelogo">
-            <a href="#" class="btn_09"><span><span>BUTTON</span>BUTTON</span></a>
             <a href='{% url "toppage:toppage" %}'><img id="home" src="{% static 'img/movie_icon.jpeg' %}" alt="トップページへ"></a>
         </div>
         <div class="menu-list">
@@ -32,7 +31,7 @@
                 <form action='{% url "accounts:login" %}' method='post' name='logout'>
 
                     {% csrf_token %}
-                    <input type="submit" value="ログイン">
+                    <input type="submit" value="ログイン" class="login-button">
                 </form></li>
                 {% endif %}
             </ul>
