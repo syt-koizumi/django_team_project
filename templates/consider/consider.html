@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<main>
+<p>テスト</p>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    #quiz-container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
+<button type="submit">結果を見る</button>
+<div id="quiz-container">
+    <h2>Quiz</h2>
+    <div id="question"></div>
+    <div id="choices"></div>
+  
+    <div id="result"></div>
+</div>
+<script>
+
+
+let score = [];
+let horror = ["スリラーブラウン管"]
+let action = ["Mad Max: Fury Road"]
+let renai = ["Roman Holiday"]
+let anim = ["Minions: The Rise of Gru"]
+let sf = ["Harry Potter and the Philosopher's Stone"]
+let mystery = ["Der Mann, der Sherlock Holmes war"]
+let adventure = ["Jungle Cruise"]
+let comedy = ["Ted"]
+
+
+
+
+const questions = [
+    {
+        question: "あなたにおすすめの映画を探します。",
+        choices: ["スタートする"],
+        answer: "スタートする"
+    },
+    {
+        question: "ホラー映画は見たい?",
+        choices: ["はい", "いいえ"],
+        answer: "はい"
+    },
+    {
+        question: "アクション映画は見たい?",
+        choices: ["はい", "いいえ"],
+        answer: "はい"
+    },
+    {
+        question: "アニメ映画は見たい?",
+        choices: ["はい", "いいえ"],
+        answer: "はい"
+    },
+    {
+        question: "恋愛映画は見たい?",
+        choices: ["はい", "いいえ"],
+        answer: "はい"
+    },
+    {
+        question: "ミステリー映画は見たい?",
+        choices: ["はい", "いいえ"],
+        answer: "はい"
+    },
+    {
+        question: "アドベンチャー映画は見たい?",
+        choices: ["はい", "いいえ"],
+        answer: "はい"
+    },
+    {
+        question: "コメディ映画は見たい?",
+        choices: ["はい", "いいえ"],
+        answer: "はい"
+    },
+    {
+        question: "SF映画は見たい?",
+        choices: ["はい", "いいえ"],
+        answer: "はい"
+    },
+    // Add more questions here
+];
+
+let currentQuestion = 0;
+function displayQuestion() {
+    const questionElement = document.getElementById("question");
+    const choicesElement = document.getElementById("choices");
+
+    questionElement.textContent = questions[currentQuestion].question;
+    choicesElement.innerHTML = "";
+
+    questions[currentQuestion].choices.forEach(choice => {
+        const button = document.createElement("button");
+        button.textContent = choice;
+        button.onclick = function() {
+            check(choice);
+        };
+        choicesElement.appendChild(button);
+    });
+}
+
+function check(choice) {
+    if(choice=="スタートする"){
+        score.push("スタート")
+    }
+    else if (choice === questions[currentQuestion].answer) {
+        if(questions[currentQuestion].question == "ホラー映画は見たい?"){
+            score.push(horror);
+        }
+        else if(questions[currentQuestion].question == "アクション映画は見たい?"){
+            score.push(action);
+        }
+        else if(questions[currentQuestion].question == "アニメ映画は見たい?"){
+            score.push(anim);
+        }
+        else if(questions[currentQuestion].question == "恋愛映画は見たい?"){
+            score.push(renai);
+        }
+        else if(questions[currentQuestion].question == "ミステリー映画は見たい?"){
+            score.push(mystery);
+        }
+        else if(questions[currentQuestion].question == "アドベンチャー映画は見たい?"){
+            score.push(adventure);
+        }
+        else if(questions[currentQuestion].question == "コメディ映画は見たい?"){
+            score.push(comedy);
+        }
+        else if(questions[currentQuestion].question == "SF映画は見たい?"){
+            score.push(sf);
+        }
+    }
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        displayQuestion();
+    } else {
+        showResult();
+    }
+}
+
+let resultUrl;
+function showResult() {
+    const quizContainer = document.getElementById("quiz-container");
+    if (score.length <= 0){
+        quizContainer.innerHTML = `<h2>おすすめは見つかりませんでした</h2>`;
+    }else{
+        let ransu = Math.floor(Math.random() * (score.length - 1)) + 1;
+        quizContainer.innerHTML = `<h2>あなたにおすすめの映画は</h2>
+        <form id="search-form" method="post">
+                {% csrf_token %}
+                <input type="text" value=${score[ransu]}>
+                <button type="submit" class="btn btn-primary btn-lg">検索</button>
+            </form>`;
+       
+    };
+    }
+   
+
+displayQuestion();
+</script>
+
+
+</main>
+{% endblock %}
+
+
