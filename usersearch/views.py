@@ -1,28 +1,34 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView, FormView,ListView
+from django.views.generic import FormView, DetailView
 from accounts.models import CustomUser
+from movie.models import MyMovieModel
 from .forms import UserSearchForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 
-#ユーザ検索用のビュー
-class UserSearchView(TemplateView):
-    model = CustomUser
-    template_name = "usersearch/userlist.html"
+class UserSearchView(FormView):
+    template_name = 'usersearch/userlist.html'
     form_class = UserSearchForm
+    context_object_name = 'users'
 
-
-    #ここでユーザを呼び出す
-   # def form_valid(self, request,**kwargs):
-    #    context = super().form_valid(**kwargs)
-     #   CustomUser_data = CustomUser.objects.filter(name = context["user_name"])
-      #  context = {
-       #     'CustomUser_data': CustomUser_data
-       # }
-       # return render(request, 'usersearch/userlist_result.html', context)
-
-class UserSearchResultView(ListView):
-    model = CustomUser
-    template_name = "usersearch/userlist_result.html"
-    context_object_name = "objects"
-
+    def form_valid(self, form):
+        username = form.cleaned_data['username']
+        users = CustomUser.objects.filter(username__icontains=username)
+        print(f"Searching for users with username containing '{username}': {users}")
+        return self.render_to_response(self.get_context_data(users=users))
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if 'users' in kwargs:
+            context['users'] = kwargs['users']
+        else:
+            context['users'] = []
+        return context
+
+class UserMoviesView(DetailView):
+    model = CustomUser
+    template_name = 'usersearch/userlist_result.html'
+    context_object_name = 'user'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['movies'] = MyMovieModel.objects.filter(createUser=self.object)
+        return context
+

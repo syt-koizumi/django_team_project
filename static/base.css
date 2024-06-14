@@ -39,3 +39,23 @@ body {
 .menu-list ul li a:hover {
     text-decoration: underline;
 }
+
+.login-button {
+    background-color:#ffff00; /* ボタンの背景色 */
+    border: none;
+    color: black; /* ボタンのテキスト色 */
+    padding: 10px 20px; /* ボタンのパディング */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px; /* ボタンの角丸 */
+    transition-duration: 0.4s;
+}
+
+/* ボタンのホバースタイル */
+.login-button:hover {
+    background-color: #fdfdfd; /* ホバー時の背景色 */
+}

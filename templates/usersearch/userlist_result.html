@@ -1,16 +1,16 @@
-{% extends 'base.html' %}
+<!-- user_movies.html -->
+
+{% extends "base.html" %}
+
 {% block content %}
-
-
-    <main>
-        <h2>検索結果一覧</h2>
-        <p>{{ objects }}</p>
-        {% for object in objects %}
-        <div class="book">
-            <p>{{ objects }}</p>
-        </div>
-        {% endfor %}
-
-    </main>
-
+  <h1>{{ user.username }}'s Movies</h1>
+  <ul>
+    {% for movie in movies %}
+    <a href="{% url 'movie:movie_detail' movie.name %}"">
+        <img src="{{ movie.imagepath }}" alt="">
+        <p>{{ movie.name }}</p>
+    </a>
+      
+    {% endfor %}
+  </ul>
 {% endblock %}
