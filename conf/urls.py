@@ -9,4 +9,5 @@ urlpatterns = [
     path("mypage/",include("mypage.urls")),
     path("movie/",include("movie.urls")),
     path("usersearch/",include("usersearch.urls")),
+    path("consider/",include("consider.urls")),
 ]
