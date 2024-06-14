@@ -1,21 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}トップページ{% endblock %}
 {% block content %}
-<link rel="stylesheet" href="">
-        <div class="content">
-            <p>最新の映画ニュースや人気の映画をチェックして、お気に入りの作品を見つけましょう！</p>
-            <h2>最新の映画ニュース</h2>
-            <a href={% url "movie:movie_search" %}><button class="login-btn">映画を検索する</button></a>
-            <ul>
-                <li>ニュース1のタイトル</li>
-                <li>ニュース2のタイトル</li>
-                <li>ニュース3のタイトル</li>
-            </ul>
-            <h2>人気の映画</h2>
-            <ul>
-                <li>映画1のタイトル</li>
-                <li>映画2のタイトル</li>
-                <li>映画3のタイトル</li>
-            </ul>
-        </div>
-    </div>
+<link rel="stylesheet" href="{% static 'toppage.css' %}">
+<div class="backgrand">
+    <img class="responsive-image" src="{% static 'img_folder/file2.jpg' %}" alt="ホームイメージ">
+</div>
+<div class="content">
+
 {% endblock %}

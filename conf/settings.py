@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "mypage.apps.MypageConfig",
     "toppage.apps.ToppageConfig",
     "usersearch.apps.UsersearchConfig",
+    "consider.apps.ConsiderConfig",
     "accounts.apps.AccountsConfig",
     "movie.apps.MovieConfig",
     'django.contrib.admin',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
