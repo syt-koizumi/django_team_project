@@ -1,4 +1,4 @@
-.logout {
+.user {
     width: 350px;
     margin: 0 auto;
     margin-top: 200px;
@@ -9,8 +9,7 @@
     text-align: center;
 }
 
-  .logout input[type="text"],
-  .lognout input[type="password"] {
+  .user input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -20,7 +19,7 @@
     font-size: 14px;
   }
 
-  .logout input[type="submit"] {
+  .user button[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #4CAF50;
@@ -31,8 +30,7 @@
     font-size: 16px;
   }
 
-  /* Style for the headings */
-  .logout p {
+  .user p {
     text-align: center;
     margin-top: 0;
     font-size: 20px;

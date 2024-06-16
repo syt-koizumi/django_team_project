@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.jumbotron {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.display-4 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.lead {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+hr {
+    width: 50%;
+    margin: 20px auto;
+    border-color: #ccc;
+}
+
+form {
+    margin-bottom: 0;
+}
+
+form input[type="text"] {
+    width: 80%; /* 入力欄の幅を調整 */
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+button {
+    background-color:#ffff00; /* ボタンの背景色 */
+    border: none;
+    color: black; /* ボタンのテキスト色 */
+    padding: 10px 20px; /* ボタンのパディング */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px; /* ボタンの角丸 */
+    transition-duration: 0.4s;
+}
+
+/* ボタンのホバースタイル */
+button:hover {
+    background-color: #e6e6e6; /* ホバー時の背景色 */
+}

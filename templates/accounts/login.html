@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h2> ログインページ </h2>
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" id="save" value=" ログイン ">
-</form>
+<link rel="stylesheet" href="{% static 'login.css' %}">
+<div class="login">
+    <h2> ログインページ </h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        <p>{{ form.as_p }}</p>
+        <input type="submit" id="save" value=" ログイン ">
+    </form>
+</div>
 {% endblock %}

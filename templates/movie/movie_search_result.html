@@ -1,76 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
- 
-<style>
-    main {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f2f2f2;
-    }
-
-    main {
-        padding: 20px;
-    }
-
-    h2 {
-        text-align: center;
-        margin-top: 0;
-    }
-
-    .book-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .book {
-        width: 200px;
-        margin: 20px 10px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition: transform 0.3s ease;
-    }
-
-    .book:hover {
-        transform: translateY(-5px);
-    }
-
-    .book a {
-        text-decoration: none;
-        color: #333;
-        display: block;
-    }
-
-    .book img {
-        width: 100%;
-        height: auto;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        
-    }
-
-    .book-info {
-        padding: 15px;
-        text-align: center;
-    }
-
-    .book p {
-        font-size: 12px;
-        margin-top: 5px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-</style>
-
+<link rel="stylesheet" href="{% static 'movie_search_result.css' %}">
 <main>
-    <h2>検索結果一覧</h2>
+    <h1>ー 検索結果一覧 ー</h1>
     <ul class="book-list">
         {% for l in objects %}
         <li class="book">
