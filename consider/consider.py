@@ -1,36 +1,39 @@
-from . import api
 import random
+from .MovieData import data
+
+movieList = ["horaa","action","renai","sf","anim"]
+charaList = ["famous","mania","new","old"]
 
 
 
-#どんどん要素を追加していく予定
-hora = ["KALI : L'ange de la Vengeance"]
-action = ["Kingdom of the Planet of the Apes"]
-anim = ["Attack"]
-renai = ["Arca de Noé"]
-sf = ["En del av dig"]
+class Consider():
+   def __init__(self,userInputList):
+      self.userInputList = userInputList
+      self.choseMovieList = []
+      self.choiseMovieName = "nani mo nai"
+      self.charaname = ""
+   def IdentifyCharaName(self):
+      if "famous" in self.userInputList:
+         self.charaname += "_famous"
+         self.userInputList.remove('famous')
+      else:
+         self.charaname += "_mania"
+         self.userInputList.remove('mania')
+      if "new" in self.userInputList:
+        self.charaname += "_new"
+        self.userInputList.remove('new')
+      else:
+        self.charaname += "_old"
+        self.userInputList.remove('old')
+   def MakechoseMovieList(self):
+      for a in movieList:
+        if a in self.userInputList:
+          self.choseMovieList += data[a + self.charaname]
+      print(self.choseMovieList)
+   def MakechoseMovie(self):
+      if not len(self.choseMovieList) == 0:
+        return random.choice(self.choseMovieList)
+      else:
+        return "nani mo nai"
 
 
-
-
-def getConsiderMovieName(result_list):
-    movie_list=[]
-    if(result_list[0]=="yes"):
-        movie_list += hora
-    if(result_list[1]=="yes"):
-        movie_list += action
-    if(result_list[2]=="yes"):
-        movie_list += anim
-    if(result_list[3]=="yes"):
-        movie_list += renai
-    if(result_list[4]=="yes"):
-        movie_list += sf
-    if(len(movie_list)==0):   
-        return "Nani mo Nai"
-    else:
-        return random.choice(movie_list)
-    
-        
-        
-    
-    

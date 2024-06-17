@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form id="considerForm" method = "GET" action="{% url 'consider:result' %}" >
+    <div class="q1" style="display:block">
+        <p>ホラー映画を見たいですか？</p>
+        <label>
+            <input type="radio" name="q1" value="horaa" checked>
+            はい
+          </label>
+          <label>
+            <input type="radio" name="q1" value="">
+            いいえ
+          </label>
+    </div>
+    <div class="q2" style="display:none">
+        <p>アクション映画を見たいですか？</p>
+        <label>
+            <input type="radio" name="q2" value="action" checked>
+            はい
+          </label>
+          <label>
+            <input type="radio" name="q2" value="">
+            いいえ
+          </label>
+    </div>
+    <div class="q3" style="display:none">
+        <p>恋愛映画を見たいですか？</p>
+        <label>
+            <input type="radio" name="q3" value="renai" checked>
+            はい
+          </label>
+          <label>
+            <input type="radio" name="q3" value="">
+            いいえ
+          </label>
+    </div>
+    <div class="q4" style="display:none">
+        <p>SF映画を見たいですか？</p>
+        <label>
+            <input type="radio" name="q4" value="sf" checked>
+            はい
+          </label>
+          <label>
+            <input type="radio" name="q4" value="">
+            いいえ
+          </label>
+    </div>
+    <div class="q5" style="display:none">
+        <p>アニメ映画を見たいですか？</p>
+        <label>
+            <input type="radio" name="q5" value="anim" checked>
+            はい
+          </label>
+          <label>
+            <input type="radio" name="q5" value="">
+            いいえ
+          </label>
+    </div>
+    <div class="q6" style="display:none">
+      <p>有名な映画かマニアックな映画どっちが見たい?</p>
+      <label>
+          <input type="radio" name="q6" value="famous" checked>
+          有名な映画
+        </label>
+        <label>
+          <input type="radio" name="q6" value="mania">
+          マニアックな映画
+        </label>
+  </div>
+  <div class="q7" style="display:none">
+    <p>比較的新しい映画か古い映画どっちが見たい?</p>
+    <label>
+        <input type="radio" name="q7" value="new" checked>
+        新しい映画
+      </label>
+      <label>
+        <input type="radio" name="q7" value="old">
+        古い映画
+      </label>
+</div>
+    <button class= "q8" type="submit"  style="display:none">結果を見る</button>
+</form>
+
+<button class= "q7" onclick="nextStep()" style="display:block">次へ</button>
+<script>
+    let step = 0;
+    function nextStep() {
+        step += 1;
+        document.getElementsByClassName('q' + step)[0].style.display = "none";
+        document.getElementsByClassName('q' + (step + 1))[0].style.display = 'block';
+        if(step==7){
+            document.getElementsByClassName('q' + step)[1].style.display = "none";
+        }
+
+    }
+
+   
+</script>
+<style>
+
+   </style>
+{% endblock %}
+
+
