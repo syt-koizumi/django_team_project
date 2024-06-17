@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% for send_user in object_list %}
+<p>{{send_user.title}}</p>
+<p>{{send_user.text}}</p>
+<p>{{send_user.dtcreated}}</p>
+{% endfor %}
+{% endblock %}
