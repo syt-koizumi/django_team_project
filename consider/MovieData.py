@@ -1,0 +1,23 @@
+
+data = {
+    "horaa_famous_new": ["Get Out"],
+    "horaa_famous_old": ["The Shining"],
+    "horaa_mania_new": ["Hereditary"],
+    "horaa_mania_old": ["Night of the Living Dead"],
+    "action_famous_new": ["Mad Max: Fury Road"],
+    "action_famous_old": ["Die Hard"],
+    "action_mania_new": ["The Raid: Redemption"],
+    "action_mania_old": ["Commando"],
+    "renai_famous_new": ["The Notebook"],
+    "renai_famous_old": ["Casablanca"],
+    "renai_mania_new": ["Blue Valentine", "Before Sunset"],
+    "renai_mania_old": ["Brief Encounter"],
+    "sf_famous_new": ["Inception"],
+    "sf_famous_old": ["2001: A Space Odyssey"],
+    "sf_mania_new": ["Primer"],
+    "sf_mania_old": ["THX 1138"],
+    "anim_famous_new": ["Spirited Away"],
+    "anim_famous_old": ["Akira"],
+    "anim_mania_new": ["Perfect Blue"],
+    "anim_mania_old": ["Watership Down"],
+}
