@@ -21,12 +21,16 @@
       <div>
         <a href='{% url "usersearch:user_search" %}'><img src="{% static 'img_folder/account.png' %}" alt="アカウント検索画面"></a>
       </div>
+      <div><!--写真のurlは後でおすすめ検索機能用の写真に変える-->
+        <a href='{% url "consider:top" %}'><img src="{% static 'img_folder/account.png' %}" alt="おすすめの映画検索機能"></a>
+      </div>
     </div>
     <!-- 左右のボタン -->
     <span id="prev" class="prev"></span>
     <span id="next" class="next"></span>
     <!-- インジケーター -->
     <ul class="indicator" id="indicator">
+      <li class="list"></li>
       <li class="list"></li>
       <li class="list"></li>
       <li class="list"></li>

@@ -28,20 +28,20 @@ li {
 /* ↓ スライドの外枠 */
 .slide-wrapper {
   width: 100%;
-  height: 600px;
+  height: 550px;
   position: absolute;
   overflow: hidden; /* はみ出したスライドを隠す */
   top: 120px;
 }
 /*  ↓ スライド（コンテンツ） */
 .slide { /*スライド全体 */
-  width: 300%;
+  width: 400%;
   height: 100%;
   display: flex;
   transition: all 0.3s;
 }
 .slide div { /* スライド */
-  width: 33.33%;
+  width: 25%;
   height: 100%;
   display: flex;
   text-align: center;
@@ -52,10 +52,13 @@ li {
   transform: translateX(0);
 }
 .slide2 { /* スライドさせるために必要なクラス */
-  transform: translateX(-33.33%);
+  transform: translateX(-25%);
 }
 .slide3 { /* スライドさせるために必要なクラス */
-  transform: translateX(-66.66%);
+  transform: translateX(-50%);
+}
+.slide4 { /* スライドさせるために必要なクラス */
+  transform: translateX(-75%);
 }
 
 /* ↓ 左右のボタン */
