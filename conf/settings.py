@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "ranking.apps.RankingConfig",
     "mypage.apps.MypageConfig",
     "toppage.apps.ToppageConfig",
     "usersearch.apps.UsersearchConfig",
