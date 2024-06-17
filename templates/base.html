@@ -15,11 +15,12 @@
         </div>
         <div class="menu-list">
             <ul class="menu">
-                <li><a href='{% url "accounts:custom_accounts_create" %}'>アカウント登録</a></li>
                 <li><a href='{% url "movie:movie_search" %}'>映画検索</a></li>
                 <li><a href='{% url "mypage:mylist" %}'>マイリスト</a></li>
                 <li><a href='{% url "usersearch:user_search" %}'>アカウント検索</a></li>
+
                 {% if user.is_authenticated %}
+                <li><a href='{% url "mail:mail_list" %}' alt="メールアイコン">メール</a></li>
                 <li><span>{{ user.get_username }}</span></li>
                 <li>
                     <form action='{% url "accounts:logout" %}' method='post' name='logout'>
@@ -28,9 +29,8 @@
                     </form>
                 </li>
                 {% else %}
-                <li>
-                <form action='{% url "accounts:login" %}' method='post' name='logout'>
-
+                <li><a href='{% url "accounts:custom_accounts_create" %}'>アカウント登録</a></li>
+                <li><form action='{% url "accounts:login" %}' method='post' name='logout'>
                     {% csrf_token %}
                     <input type="submit" value="ログイン" class="login-button">
                 </form></li>
