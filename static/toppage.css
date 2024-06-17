@@ -31,7 +31,7 @@ li {
   height: 600px;
   position: absolute;
   overflow: hidden; /* はみ出したスライドを隠す */
-  top: 138px;
+  top: 120px;
 }
 /*  ↓ スライド（コンテンツ） */
 .slide { /*スライド全体 */
