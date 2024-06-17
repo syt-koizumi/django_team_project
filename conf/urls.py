@@ -11,4 +11,5 @@ urlpatterns = [
     path("usersearch/",include("usersearch.urls")),
     path("consider/",include("consider.urls")),
     path("ranking/",include("ranking.urls")),
+    path("comment/", include("comment.urls")),
 ]
