@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "mail.apps.MailConfig",
     "comment.apps.CommentConfig",
     "ranking.apps.RankingConfig",
     "mypage.apps.MypageConfig",
