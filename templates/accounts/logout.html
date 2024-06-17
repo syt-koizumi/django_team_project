@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h2> ログアウトしました </h2>
-<h3>ログインはこちら↓</h3>
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" id="save" value=" ログイン ">
+<link rel="stylesheet" href="{% static 'logout.css' %}">
+<div class="logout">
+    <h2> ログアウトしました </h2>
+    <a href='{% url "toppage:toppage" %}'><input type="submit" id="save" value=" TOPへ "></a>
 </form>
 {% endblock %}
+</div>
