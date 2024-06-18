@@ -1,43 +1,25 @@
-<!-- movie_ranking.html -->
-
+<!-- comments.html -->
 {% extends "base.html" %}
-{% load static %}
-{% block content %}
 
-<style>
-    th {
-        width: 100px;
-    }
-    .overview{
-        width: 600px;
-    }
-</style>
-  <h1>コメント</h1>
-  <form method="POST" action="">
+{% block content %}
+  <h1>Comments</h1>
+  <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit">
+    <button type="submit">Post Comment</button>
   </form>
-  <table>
-    <thead>
-      <tr>
-        <th>作品名</th>
-        <th>イメージ</th>
-        <th>日時</th>
-        <th>人</th>
-        <th>コメント内容</th>
-        <th>スコア</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for comment in comments %}
-            <td><a href={% url "movie:movie_detail" comment.name %}><img src="{{ comment.imagepath }}" alt="映画の画像" width="100px"></a></td>
-            <td><a href={% url "movie:movie_detail" comment.name %}>{{ comment.name }}</a>
-            <td>comment.date</td>
-            <td>comment.createUser</td>
-            <td>comment.comment</td>
-            <td>comment.score></td>
-        {% endfor %}
-    </tbody>
-  </table>
+
+  <h2>All Comments</h2>
+  <ul>
+    {% for comment in comments %}
+      <li>
+        <strong><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></strong>
+        {{ comment.imagepath }}<br>
+        by {{ comment.user }} on {{ comment.date }}<br>
+        Rating: {{ comment.rating }}<br>
+        {{ comment.comment }}
+      </li>
+    {% endfor %}
+  </ul>
+
 {% endblock %}
