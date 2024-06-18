@@ -10,7 +10,7 @@ class CommentView(View):
     def get(self, request):
         form = CommentForm(user=request.user)
         comments = Comment.objects.all().order_by('-date')
-        return render(request, 'comment/comments.html', {'form': form, 'comments': comments})
+        return render(request, 'comment/comment.html', {'form': form, 'comments': comments})
 
     def post(self, request):
         form = CommentForm(request.POST, user=request.user)
@@ -21,5 +21,5 @@ class CommentView(View):
             comment.save()
             return redirect('/comment')
         comments = Comment.objects.all().order_by('-date')
-        return render(request, 'comment/comments.html', {'form': form, 'comments': comments})
+        return render(request, 'comment/comment.html', {'form': form, 'comments': comments})
    
