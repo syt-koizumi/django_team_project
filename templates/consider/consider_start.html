@@ -1,88 +1,143 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form id="considerForm" method = "GET" action="{% url 'consider:result' %}" >
-    <div class="q1" style="display:block">
-        <p>ホラー映画を見たいですか？</p>
-        <label>
-            <input type="radio" name="q1" value="horaa" checked>
-            はい
-          </label>
-          <label>
-            <input type="radio" name="q1" value="">
-            いいえ
-          </label>
-    </div>
-    <div class="q2" style="display:none">
-        <p>アクション映画を見たいですか？</p>
-        <label>
-            <input type="radio" name="q2" value="action" checked>
-            はい
-          </label>
-          <label>
-            <input type="radio" name="q2" value="">
-            いいえ
-          </label>
-    </div>
-    <div class="q3" style="display:none">
-        <p>恋愛映画を見たいですか？</p>
-        <label>
-            <input type="radio" name="q3" value="renai" checked>
-            はい
-          </label>
-          <label>
-            <input type="radio" name="q3" value="">
-            いいえ
-          </label>
-    </div>
-    <div class="q4" style="display:none">
-        <p>SF映画を見たいですか？</p>
-        <label>
-            <input type="radio" name="q4" value="sf" checked>
-            はい
-          </label>
-          <label>
-            <input type="radio" name="q4" value="">
-            いいえ
-          </label>
-    </div>
-    <div class="q5" style="display:none">
-        <p>アニメ映画を見たいですか？</p>
-        <label>
-            <input type="radio" name="q5" value="anim" checked>
-            はい
-          </label>
-          <label>
-            <input type="radio" name="q5" value="">
-            いいえ
-          </label>
-    </div>
-    <div class="q6" style="display:none">
-      <p>有名な映画かマニアックな映画どっちが見たい?</p>
-      <label>
-          <input type="radio" name="q6" value="famous" checked>
-          有名な映画
-        </label>
-        <label>
-          <input type="radio" name="q6" value="mania">
-          マニアックな映画
-        </label>
-  </div>
-  <div class="q7" style="display:none">
-    <p>比較的新しい映画か古い映画どっちが見たい?</p>
-    <label>
-        <input type="radio" name="q7" value="new" checked>
-        新しい映画
-      </label>
-      <label>
-        <input type="radio" name="q7" value="old">
-        古い映画
-      </label>
-</div>
-    <button class= "q8" type="submit"  style="display:none">結果を見る</button>
-</form>
 
+<main>
+<form id="considerForm" method = "GET" action="{% url 'consider:result' %}" >
+  <div class="survey-container q1" style="display:block">
+    <div class="survey-question">
+        ホラー映画をみたいですか?
+    </div>
+    <div class="survey-options">
+        <label> 
+            <input type="radio" name="q1" value="horaa" checked> 
+            <span class="checkmark"></span>
+            はい
+        </label>
+        <label>
+            <input type="radio" name="q1" value="">
+            <span class="checkmark"></span>
+            いいえ
+        </label>
+    </div>
+</div>
+
+<div class="survey-container q2" style="display:none">
+    <div class="survey-question">
+        アクション映画を見たいですか？
+    </div>
+    <div class="survey-options">
+        <label> 
+            <input type="radio" name="q2" value="action" checked> 
+            <span class="checkmark"></span>
+            はい
+        </label>
+        <label>
+            <input type="radio" name="q2" value="">
+            <span class="checkmark"></span>
+            いいえ
+        </label>
+    </div>
+</div>
+
+<div class="survey-container q3" style="display:none">
+    <div class="survey-question">
+        恋愛映画を見たいですか？
+    </div>
+    <div class="survey-options">
+        <label> 
+            <input type="radio" name="q3" value="renai" checked> 
+            <span class="checkmark"></span>
+            はい
+        </label>
+        <label>
+            <input type="radio" name="q3" value="">
+            <span class="checkmark"></span>
+            いいえ
+        </label>
+    </div>
+</div>
+
+<div class="survey-container q4" style="display:none">
+    <div class="survey-question">
+        SF映画を見たいですか？
+    </div>
+    <div class="survey-options">
+        <label> 
+            <input type="radio" name="q4" value="sf" checked> 
+            <span class="checkmark"></span>
+            はい
+        </label>
+        <label>
+            <input type="radio" name="q4" value="">
+            <span class="checkmark"></span>
+            いいえ
+        </label>
+    </div>
+</div>
+
+<div class="survey-container q5" style="display:none">
+    <div class="survey-question">
+        アニメ映画を見たいですか？
+    </div>
+    <div class="survey-options">
+        <label> 
+            <input type="radio" name="q5" value="anim" checked> 
+            <span class="checkmark"></span>
+            はい
+        </label>
+        <label>
+            <input type="radio" name="q5" value="">
+            <span class="checkmark"></span>
+            いいえ
+        </label>
+    </div>
+</div>
+
+<div class="survey-container q6" style="display:none">
+    <div class="survey-question">
+        有名な映画かマニアックな映画どっちが見たい?
+    </div>
+    <div class="survey-options">
+        <label> 
+            <input type="radio" name="q6" value="famous" checked> 
+            <span class="checkmark"></span>
+            有名な映画
+        </label>
+        <label>
+            <input type="radio" name="q6" value="mania">
+            <span class="checkmark"></span>
+            マニアックな映画
+        </label>
+    </div>
+</div>
+
+<div class="survey-container q7" style="display:none">
+    <div class="survey-question">
+        比較的新しい映画か古い映画どっちが見たい?
+    </div>
+    <div class="survey-options">
+        <label> 
+            <input type="radio" name="q7" value="new" checked> 
+            <span class="checkmark"></span>
+            新しい映画
+        </label>
+        <label>
+            <input type="radio" name="q7" value="old">
+            <span class="checkmark"></span>
+            古い映画
+        </label>
+    </div>
+</div>
+
+    <button class= "q8" type="submit"  style="display:none">結果を見る</button>
+    
+
+</form>
+    
 <button class= "q7" onclick="nextStep()" style="display:block">次へ</button>
+
+</main>
 <script>
     let step = 0;
     function nextStep() {
@@ -98,7 +153,117 @@
    
 </script>
 <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+       main {
+            font-family: Arial, sans-serif;
+            background: #50a3a2; /* Fallback for older browsers */
+            background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+            background: -moz-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+            background: -o-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+            background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+            display:flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+       button{
+        margin-top: 50px;
+        background-color:white;
+        color:  #4CAF50;
+        border: none;
+        padding: 12px 24px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+       }
+        .survey-container {
+            text-align: center;
+            opacity: 0;
+            animation: fade-in 1s ease forwards;
+            animation-delay: 0.5s;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .survey-question {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .survey-options {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Custom radio button style */
+        .survey-options label {
+            position: relative;
+            display: inline-block;
+            padding-left: 30px;
+            margin-right: 20px;
+            line-height: 1.8;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .survey-options input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+        }
+
+        /* When the radio button is checked, change the background and checkmark */
+        .survey-options input[type="radio"]:checked + .checkmark::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+        }
+
+        /* On hover, change text color */
+        .survey-options label:hover {
+            color: #4CAF50;
+        }
    </style>
 {% endblock %}
 
