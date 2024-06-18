@@ -29,7 +29,6 @@ class Consider():
       for a in movieList:
         if a in self.userInputList:
           self.choseMovieList += data[a + self.charaname]
-      print(self.choseMovieList)
    def MakechoseMovie(self):
       if not len(self.choseMovieList) == 0:
         return random.choice(self.choseMovieList)
