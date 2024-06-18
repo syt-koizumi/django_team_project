@@ -14,13 +14,6 @@ class UserSearchView(FormView):
         print(f"Searching for users with username containing '{username}': {users}")
         return self.render_to_response(self.get_context_data(users=users))
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if 'users' in kwargs:
-            context['users'] = kwargs['users']
-        else:
-            context['users'] = []
-        return context
 
 class UserMoviesView(DetailView):
     model = CustomUser

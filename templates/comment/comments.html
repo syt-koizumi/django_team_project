@@ -1,0 +1,24 @@
+<!-- comments.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Comments</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Post Comment</button>
+  </form>
+
+  <h2>All Comments</h2>
+  <ul>
+    {% for comment in comments %}
+      <li>
+        <strong><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></strong>
+        {{ comment.imagepath }}<br>
+        by {{ comment.user }} on {{ comment.date }}<br>
+        Rating: {{ comment.rating }}<br>
+        {{ comment.comment }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
