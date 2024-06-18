@@ -3,19 +3,24 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'mylist.css' %}">
     <main>
+        <ul class="book-list">
         {% for data in MyMovieModel_data %}
-        <div class="book">
+        <li class="book">
             <a href={% url "movie:movie_detail" data.name %}>
                 <img src="{{ data.imagepath }}" alt="映画の画像">
+                <div class="book-info">
                 <p>{{ data.name }}</p>
-                <p>{{ data.pk }}</p>
+                </div>
             </a>
-        </div>
+                <button type="submit"><a href = "{% url 'mypage:delete' data.pk %}">削除</a></button>
+            </a>
+        </li>
      
-            <button type="submit"><a href = "{% url 'mypage:delete' data.pk %}">削除</a></button>
        
 
         {% endfor %}
+    </ul>
 
     </main>
+
     {% endblock %}

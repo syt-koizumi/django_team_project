@@ -1,3 +1,4 @@
+
 # views.py
 from django.shortcuts import render, redirect
 from django.views.generic import View
@@ -21,5 +22,4 @@ class CommentView(View):
             return redirect('/comment')
         comments = Comment.objects.all().order_by('-date')
         return render(request, 'comment/comments.html', {'form': form, 'comments': comments})
-    
-
+   

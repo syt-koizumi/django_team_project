@@ -12,4 +12,3 @@ class CommentForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if user:
             self.fields['movie_name'].queryset = MyMovieModel.objects.filter(createUser=user)
-
