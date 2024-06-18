@@ -3,7 +3,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'mylist.css' %}">
     <main>
-        <a href="https://twitter.com/share?url={% url 'usersearch:other_user_movie' request.user.id %}" class="twitter-share-button"  data-lang="ja" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a href="https://twitter.com/share?url={% url 'usersearch:other_user_movie' request.user.id %}" class="twitter-share-button"  data-lang="ja" data-show-count="false"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="{% url 'usersearch:other_user_movie' request.user.id %}" data-color="default" data-size="small" data-count="false" data-ver="3" style="display: none;"></div>
 <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
         <ul class="book-list">
