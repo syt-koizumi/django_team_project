@@ -2,9 +2,12 @@
 {% load static %}
 {% block content %}
 
-{% for send_user in object_list %}
-<p>{{send_user.title}}</p>
-<p>{{send_user.text}}</p>
-<p>{{send_user.dtcreated}}</p>
-{% endfor %}
+<h1>ーお知らせ一覧ー</h1>
+
+<div class="content">
+    {% for send_user in title %}
+    <a href="{% url 'mail:mail_list' %}">{{send_user.title}}</a>
+    <p>-------------------</p>
+    {% endfor %}
 {% endblock %}
+</div>
