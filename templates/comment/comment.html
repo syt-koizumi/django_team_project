@@ -3,11 +3,20 @@
 
 {% block content %}
   <h1>Comments</h1>
+  
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ comment_form.as_p }}
     <button type="submit">Post Comment</button>
   </form>
+
+  <!-- Movie Filtering Form -->
+  <h2>Filter Comments by Movie</h2>
+  <form method="get">
+    {{ filter_form.as_p }}
+    <button type="submit">Filter</button>
+  </form>
+
 
   <h2>All Comments</h2>
   <ul>
@@ -16,7 +25,7 @@
         <strong><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></strong>
         {{ comment.imagepath }}<br>
         by {{ comment.user }} on {{ comment.date }}<br>
-        Rating: {{ comment.rating }}<br>
+        Rating: {{ comment.get_rating_display }}<br>
         {{ comment.comment }}
       </li>
     {% endfor %}

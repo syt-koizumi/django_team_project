@@ -1,25 +1,42 @@
-
 # views.py
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from .models import Comment
 from movie.models import MyMovieModel
-from .forms import CommentForm
+from .forms import CommentForm, MovieFilterForm
 
 class CommentView(View):
     def get(self, request):
-        form = CommentForm(user=request.user)
+        comment_form = CommentForm(user=request.user)
+        filter_form = MovieFilterForm(request.GET or None)
         comments = Comment.objects.all().order_by('-date')
-        return render(request, 'comment/comment.html', {'form': form, 'comments': comments})
+
+        if filter_form.is_valid() and filter_form.cleaned_data['movie_name']:
+            comments = comments.filter(movie_name=filter_form.cleaned_data['movie_name'])
+
+        return render(request, 'comment/comment.html', {
+            'comment_form': comment_form,
+            'filter_form': filter_form,
+            'comments': comments
+        })
 
     def post(self, request):
-        form = CommentForm(request.POST, user=request.user)
-        if form.is_valid():
-            comment = form.save(commit=False)
+        comment_form = CommentForm(request.POST, user=request.user)
+        filter_form = MovieFilterForm(request.GET or None)
+
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
             comment.user = request.user
             comment.imagepath = comment.movie_name
             comment.save()
             return redirect('/comment')
+
         comments = Comment.objects.all().order_by('-date')
-        return render(request, 'comment/comment.html', {'form': form, 'comments': comments})
-   
+        if filter_form.is_valid() and filter_form.cleaned_data['movie_name']:
+            comments = comments.filter(movie_name=filter_form.cleaned_data['movie_name'])
+
+        return render(request, 'comment/comment.html', {
+            'comment_form': comment_form,
+            'filter_form': filter_form,
+            'comments': comments
+        })
