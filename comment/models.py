@@ -21,4 +21,4 @@ class Comment(models.Model):
     rating = models.IntegerField(choices=SCORE_CHOICES)
     date = models.DateTimeField(default=datetime.now(), verbose_name="投稿日")
     def __str__(self):
-       return f'{self.movie.name} - {self.user.username}'
+       return f'{self.movie_name.name} - {self.user.username}'

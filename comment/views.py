@@ -21,13 +21,13 @@ class CommentView(View):
         })
 
     def post(self, request):
-        comment_form = CommentForm(request.POST, user=request.user)
+        comment_form = CommentForm(request.POST, request.FILES, user=request.user)  # request.FILESを追加
         filter_form = MovieFilterForm(request.GET or None)
 
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.user = request.user
-            comment.imagepath = comment.movie_name
+            comment.imagepath = comment.image.url  # imageフィールドのURLをimagepathに設定
             comment.save()
             return redirect('/comment')
 
