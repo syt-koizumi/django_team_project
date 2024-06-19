@@ -27,7 +27,8 @@ class CommentView(View):
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.user = request.user
-            comment.imagepath = comment.movie_name
+            movie = comment_form.cleaned_data['movie_name']
+            comment.imagepath = movie.imagepath
             comment.save()
             return redirect('/comment')
 
