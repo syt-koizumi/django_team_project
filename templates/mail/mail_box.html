@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>ーお知らせ一覧ー</h1>
+
+<div class="content">
+    {% for mail in mails %}
+        <form action="{% url 'mail:mail_detail' mail.id %}" method="get">
+            <button type="submit" name="button">{{ mail.title }}</button>
+            {% csrf_token %}
+        </form>
+        <p>-------------------</p>
+    {% endfor %}
+{% endblock %}
+</div>

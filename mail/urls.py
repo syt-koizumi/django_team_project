@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import create_mail
+from .views import Mail_list, Mail_detail
 
 app_name = 'mail'
 urlpatterns = [
-    path('create',create_mail.as_view(), name='mail_list'),
+    path('', Mail_list.as_view(), name='mail_list'),
+    path('detail/<int:pk>', Mail_detail.as_view(), name='mail_detail'),
 ]
