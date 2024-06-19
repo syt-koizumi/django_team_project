@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}トップページ{% endblock %}
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .movie {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            overflow: hidden;
+        }
+        .movie:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .movie img {
+            float: left;
+            margin-right: 20px;
+            width: 200px; /* 画像の幅を調整 */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .movie h2 {
+            margin-top: 0;
+            font-size: 1.8em;
+            color: #333;
+        }
+        .movie p {
+            font-size: 1.2em;
+            line-height: 1.4;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>おすすめの映画5選</h1>
+        
+        <div class="movie">
+            <img src="https://image.tmdb.org/t/p/w500/vbi56h6a1BGjnhq2RnUrcQZs2aV.jpg" alt="インセプション">
+            <h2>グラン・ブルー</h2>
+            <p>このロマンチックなファンタジー・アドベンチャーでは、2人の男が海の呼びかけに応える。ジャックとエンツォは幼なじみで、フリーダイビングという危険なスポーツへの情熱を分かち合っている。プロのダイバーであるジャックは、ジャックの少年時代に海で亡くなった父親の跡を継ぐことを選んだ。科学者たちを当惑させるほど、ジャックは水中で心拍数と呼吸パターンを調整する驚くべき能力を持ち、そのバイタルサインは人間よりもイルカのそれに近い。渋るジャックをエンツォが説得し、スキューバ・ギアなしでより深く、より長く潜れるかを競うフリー・ダイビング・コンテストに出場させるが、ジャックはアメリカから来た美しい保険調査員ジョハナと出会う。</p>
+        </div>
+        
+        
+        <div class="movie">
+            <img src="https://image.tmdb.org/t/p/w500/nD2r5nRtNOCbzIyBBpAlcYvhn1D.jpg" alt="ショーシャンクの空に">
+            <h2>aespa: MY First page(8月30日公開)</h2>
+            <p>韓国の4人組ガールズグループ「aespa」のドキュメンタリー映画「aespa: MY First page」が、8月30日から日本公開されることが決定。あわせて、ポスタービジュアルが披露された。
+
+                パンデミック下の2020年11月17日に、「Black Mamba」でデビューした 「aespa」は、KARINA、GISELLE、WINTER、NINGNINGの4人組グループ。メンバーそれぞれに、“もう一つの自我として”のアバターが存在するという近未来的な世界観や、圧倒的なビジュアルで、日本でも高い人気を獲得。昨年8月には、海外アーティストとして最速となるデビューから2年9カ月で東京ドーム公演を成功させた。</p>
+        </div>
+        
+        <div class="movie">
+            <img src="https://th.bing.com/th/id/OIP.h7nIVCr6cwPhEa3qNW3zTgAAAA?rs=1&pid=ImgDetMain" alt="スター・ウォーズ">
+            <h2>それいけ！アンパンマンばいきんまんとえほんのルルン</h2>
+            <p>ある絵本を見つけたばいきんまん。絵本から「愛と勇気の戦士ばいきんまん、助けにきて!!」と声が聞こえ、その中に吸い込まれてしまう。その中の世界には森の妖精たちが暮らす〈大きな木の大きな森〉が広がっていて、そこでばいきんまんは森の妖精・ルルンと出会う。森で大暴れする“すいとるゾウ”をやっつけたいけど、怖がりで勇気が出せないルルンはばいきんまんにお願いする。最初は嫌がりながらも、すいとるゾウを倒すために一生懸命なばいきんまん。その姿にルルンも勇気がわいてくる。しかし、すいとるゾウの強さにばいきんまんとルルンは大苦戦。絶体絶命のピンチの中、ばいきんまんはルルンに「アンパンマンを呼んでこい！」と伝える――。</p>
+        </div>
+        
+        <div class="movie">
+            <img src="https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg" alt="ハリー・ポッター">
+            <h2>猿の惑星キングダム</h2>
+            <p>名作SF映画「猿の惑星」をリブートした「猿の惑星：創世記（ジェネシス）」「猿の惑星：新世紀（ライジング）」「猿の惑星：聖戦記（グレート・ウォー）」に続くシリーズ第4弾。
+
+                300年後の地球。荒廃した世界で人類は退化し、高い知能と言語を得た猿たちが地球の新たな支配者となっていた。そして、その一部の野心的な猿たちが巨大な帝国（キングダム）を築こうとしていた。帝国の冷酷な独裁者であるプロキシマス・シーザーによって故郷の村を滅ぼされ、家族や友と離れ離れになってしまった若き猿ノアは、旅の途中で出会った年老いたオランウータンのラカから、猿と人間の共存についての昔話を聞かされ、ラカがノヴァと名付けた人間の女性と出会う。ノヴァは野生動物のような人間たちの中で誰よりも賢いとされ、プロキシマス・シーザーの一派から狙われていた。彼女と一緒に行動することになったノアだったが、プロキシマス・シーザーにとらわれ、ノヴァとともに彼の帝国へ連行されてしまう。</p>
+        </div>
+        
+    </div>
+
+
+    {% endblock %}
