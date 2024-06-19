@@ -16,8 +16,7 @@ class CommentForm(forms.ModelForm):
 
 class MovieFilterForm(forms.Form):
     movie_name = forms.ModelChoiceField(
-        queryset=MyMovieModel.objects.all(),
+        queryset=MyMovieModel.objects.filter(movie_comments__isnull=False).distinct(),
         required=False,
-        label='Filter by Movie',
-        to_field_name='name'
+        label='Filter by Movie'
     )
