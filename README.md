@@ -2,7 +2,7 @@
 チーム開発用のリポジトリ
 
 ### マイグレーションを最初の状態に戻し、マイグレーションファイルも削除する<br>
-python manage.py migrate comment zero
+python manage.py migrate [app名] zero
 
 ### powershellから仮想環境に入るときのコマンド<br>
 Set-ExecutionPolicy RemoteSigned -Scope Process <br>
