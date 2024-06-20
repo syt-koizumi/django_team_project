@@ -155,18 +155,20 @@
 <style>
         /* Reset CSS */
         * {
-            margin: 0;
+            margin: 0px;
             padding: 0;
             box-sizing: border-box;
         }
-
-       main {
-            font-family: Arial, sans-serif;
-            background: #50a3a2; /* Fallback for older browsers */
+       body{
+        background: #50a3a2; /* Fallback for older browsers */
             background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
             background: -moz-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
             background: -o-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
             background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+       }
+       main {
+          margin:20px;
+            
             display:flex;
             flex-flow: column;
             justify-content: center;
@@ -179,7 +181,7 @@
         color:  #4CAF50;
         border: none;
         padding: 12px 24px;
-        font-size: 1.2rem;
+        font-size: 0.9rem;
         cursor: pointer;
         border-radius: 4px;
         transition: background-color 0.3s ease;
@@ -194,7 +196,8 @@
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20 auto;
+            width: 100%;
         }
 
         @keyframes fade-in {

@@ -22,10 +22,10 @@
   <ul>
     {% for comment in comments %}
       <li>
-        <strong><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></strong>
-        <img src="{{ comment.imagepath.image.url }}" alt="Movie Image">
+        <strong><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></strong><br>
+        <img src="{{ comment.imagepath }}" alt="" style="width: 100px;"><br>
         by {{ comment.user }} on {{ comment.date }}<br>
-        Rating: {{ comment.get_rating_display }}<br>
+        評価: {{ comment.get_rating_display }}<br>
         {{ comment.comment }}
       </li>
     {% endfor %}

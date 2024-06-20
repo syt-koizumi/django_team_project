@@ -13,4 +13,5 @@ urlpatterns = [
     path("ranking/",include("ranking.urls")),
     path("comment/", include("comment.urls")),
     path("mail/", include("mail.urls")),
+    path("topic/", include("topic.urls")),
 ]
