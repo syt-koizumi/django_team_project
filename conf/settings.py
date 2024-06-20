@@ -9,6 +9,7 @@ env = environ.Env()  # 追加
 env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
+
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 
