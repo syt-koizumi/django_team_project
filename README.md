@@ -7,4 +7,7 @@ python manage.py migrate [app名] zero
 ### powershellから仮想環境に入るときのコマンド<br>
 Set-ExecutionPolicy RemoteSigned -Scope Process <br>
  .\env\Scripts\activate.ps1　<br>
- python manage.py runserver
+ python manage.py runserver<br>
+
+### コマンドプロンプトの場合<br>
+env\Scripts\activate.bat
