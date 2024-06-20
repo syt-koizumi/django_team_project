@@ -5,10 +5,10 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env()  # 追加
-env.read_env(os.path.join(BASE_DIR, '.env'))
+#env = environ.Env()  # 追加
+#env.read_env(os.path.join(BASE_DIR, '.env'))
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'django-insecure-b$)=$nx)=nssh5s66_+vezy*9itw(i0mylfw6877-7a%d8af(-'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
