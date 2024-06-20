@@ -13,16 +13,16 @@
     <!-- スライド（コンテンツ） -->
     <div id="slide" class="slide">
       <div>
-        <a href='{% url "movie:movie_search" %}'><img src="{% static 'img_folder/search.png' %}" alt="検索画面"></a>
+        <a href='{% url "movie:movie_search" %}'><img src="{% static 'img_folder/search.png' %}"  style = "max-width:80%;" alt="検索画面"></a>
       </div>
       <div>
-        <a href='{% url "mypage:mylist" %}'><img src="{% static 'img_folder/mylist.png' %}" alt="マイリスト画面"></a>
+        <a href='{% url "mypage:mylist" %}'><img src="{% static 'img_folder/mylist.png' %}" style = "max-width:80%;" alt="マイリスト画面"></a>
       </div>
       <div>
-        <a href='{% url "usersearch:user_search" %}'><img src="{% static 'img_folder/account.png' %}" alt="アカウント検索画面"></a>
+        <a href='{% url "usersearch:user_search" %}'><img src="{% static 'img_folder/account.png' %}"  style = "max-width:70%;" alt="アカウント検索画面"></a>
       </div>
       <div><!--写真のurlは後でおすすめ検索機能用の写真に変える-->
-        <a href='{% url "topic:top" %}'><img src="{% static 'img_folder/Topic.png' %}" alt="特集映画"></a>
+        <a href='{% url "topic:top" %}'><img src="{% static 'img_folder/topic_img.png' %}" style = "max-width:60%;" alt="特集映画"></a>
       </div>
     </div>
     <!-- 左右のボタン -->
