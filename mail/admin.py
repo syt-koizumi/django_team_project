@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import send_user
+from .models import Mail, ReadMail
 
-admin.site.register(send_user)
+admin.site.register(Mail)
+admin.site.register(ReadMail)
