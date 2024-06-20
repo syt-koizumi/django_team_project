@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 
-<h1>ーお知らせ一覧ー</h1>
-<a href="{% url 'mail:unread_mail_list' %}"><button>未読一覧</button></a>
+<h1>ー未読一覧ー</h1>
+<a href="{% url 'mail:mail_list' %}"><button>お知らせ一覧へ戻る</button></a>
 
 <div class="content">
     {% for mail in mails %}
@@ -11,7 +11,7 @@
         <h3>件名：{{ mail.title }}</h3>
         <a href="{% url 'mail:mail_detail' mail.id %}">詳細</a>
     </div>
-        <p>-------------------</p>
+    <p>-------------------</p>
     {% endfor %}
-{% endblock %}
 </div>
+{% endblock %}
