@@ -22,7 +22,7 @@
                 <li><a href='{% url "usersearch:user_search" %}'>アカウント検索</a></li>
                 <li><a href='{% url "consider:top" %}'>映画診断</a></li>
                 {% if user.is_authenticated %}
-                <li><a href='{% url "mail:mail_list" %}' alt="メールアイコン">メール</a></li>
+                <li><a href='{% url "mail:mail_list" %}' alt="メールアイコン">おしらせ</a></li>
                 <li><span>{{ user.get_username }}</span></li>
                 <li>
                     <form action='{% url "accounts:logout" %}' method='post' name='logout'>
