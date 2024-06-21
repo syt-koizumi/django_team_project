@@ -26,10 +26,11 @@
     </thead>
     <tbody>
       <!-- <p>{{ movies }}</p> -->
+      <!-- {{ movies }} -->
       {% for mv in movies %}
   
         <tr>
-        <th>{{ forloop.counter }}位</th>
+        <th>{{ mv.rank }}位</th>
         <td><a href={% url "movie:movie_detail" mv.name  %}><img src="{{ mv.imagepath }}" alt="映画の画像" width="100px"></a></td>
         <td><a href={% url "movie:movie_detail" mv.name %}>{{ mv.name }}</a></td>
         <td>{{ mv.movie_count }}</td>
