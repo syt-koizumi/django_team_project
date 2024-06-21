@@ -1,18 +1,18 @@
 
 .backgrand {
-    position: relative; 
+ 
     width: 100%; 
     height: 100vh;
     overflow: hidden;
 }
 
 .movie-image {
-    position: absolute; 
+     
     top: 0; 
     left: 0; 
     width: 100%;
     height: 100%; 
-    object-fit: cover; 
+     
 }
 
 
@@ -29,8 +29,6 @@ li {
 .slide-wrapper {
   width: 100%;
   height: 550px;
-  position: absolute;
-  overflow: hidden; /* はみ出したスライドを隠す */
   top: 120px;
 }
 /*  ↓ スライド（コンテンツ） */
@@ -63,7 +61,7 @@ li {
 
 /* ↓ 左右のボタン */
 .next {
-  position: absolute;
+  
   width: 15px;
   height: 15px;
   right: 10px;
@@ -76,7 +74,7 @@ li {
   transform: rotate(45deg) translateY(50%);
 }
 .prev {
-  position: absolute;
+ 
   width: 15px;
   height: 15px;
   left: 25px;
@@ -91,7 +89,7 @@ li {
 /* ↓ インジケーター */
 .indicator {
   width: 100%;
-  position: absolute;
+
   bottom: 20px;
   display: flex;
   column-gap: 18px;
