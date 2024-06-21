@@ -26,9 +26,32 @@
         <img src="{{ comment.imagepath }}" alt="" style="width: 100px;"><br>
         by {{ comment.user }} on {{ comment.date }}<br>
         評価: {{ comment.get_rating_display }}<br>
-        {{ comment.comment }}
+        {{ comment.comment }}<br>
+        <button class="like-btn" data-id="{{ comment.id }}">Like</button>
+        <span id="likes-{{ comment.id }}">{{ comment.likes }}</span> likes
       </li>
     {% endfor %}
   </ul>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.like-btn').click(function(){
+        var commentId = $(this).data('id');
+        var url = "{% url 'comment:like_comment' comment_id=0 %}".replace('0', commentId);
+        console.log(url);
+        $.ajax({
+          url: url,
+          method: 'POST',
+          data: {
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+          },
+          success: function(response) {
+            $('#likes-' + commentId).text(response.likes);
+          }
+        });
+      });
+    });
+  </script>
 
 {% endblock %}

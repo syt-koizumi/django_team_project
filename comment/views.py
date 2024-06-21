@@ -1,5 +1,6 @@
 # views.py
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import View
 from .models import Comment
 from movie.models import MyMovieModel
@@ -42,3 +43,11 @@ class CommentView(LoginRequiredMixin,View):
             'filter_form': filter_form,
             'comments': comments
         })
+    
+def like_comment(request, comment_id):
+    if request.method == "POST":
+        comment = get_object_or_404(Comment, id=comment_id)
+        comment.likes += 1
+        comment.save()
+        return JsonResponse({'likes': comment.likes})
+    return JsonResponse({'error': 'Invalid request'}, status=400)
