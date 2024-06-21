@@ -3,9 +3,16 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'mylist.css' %}">
     <main>
-        <a href="https://twitter.com/share?url={% url 'usersearch:other_user_movie' request.user.id %}" class="twitter-share-button"  data-lang="ja" data-show-count="false"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="{% url 'usersearch:other_user_movie' request.user.id %}" data-color="default" data-size="small" data-count="false" data-ver="3" style="display: none;"></div>
-<script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+        <div style="display: flex; align-items: center;">
+            <a href="https://twitter.com/share?url={% url 'usersearch:other_user_movie' request.user.id %}" class="twitter-share-button"  data-lang="ja" data-show-count="false"></a>
+            <div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="{% url 'usersearch:other_user_movie' request.user.id %}" data-color="default" data-size="small" data-count="false" data-ver="3" style="display: none;"></div>
+            <div class="fb-share-button" data-href="{% url 'usersearch:other_user_movie' request.user.id %}" data-layout="button_count"></div>
+        </div>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0" nonce="D3w4c3G0"></script>
+
         <ul class="book-list">
         {% for data in MyMovieModel_data %}
         <li class="book">
