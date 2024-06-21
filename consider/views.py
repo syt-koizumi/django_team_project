@@ -9,14 +9,14 @@ from .api import MylistApi
 from movie.models import MyMovieModel
 from .consider import Consider
 
-class ConsiderStartView(TemplateView):
+class ConsiderStartView(LoginRequiredMixin,TemplateView):
     template_name = "consider/consider_start.html"
 
-class ConsiderTopView(TemplateView):
+class ConsiderTopView(LoginRequiredMixin,TemplateView):
     template_name = "consider/consider_top.html"
 
 
-class ConsiderResultView(TemplateView):
+class ConsiderResultView(LoginRequiredMixin,TemplateView):
     template_name = "consider/consider_result.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

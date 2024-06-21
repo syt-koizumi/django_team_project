@@ -25,7 +25,8 @@ def gety(movie_name):
    res = api.search_movies(movie_name)
    reslist = []
    for a in res["results"]:
-     reslist.append({"title":str(a["title"]),"overview":str(a["overview"]),"imagepath":"https://image.tmdb.org/t/p/w500" + str(a["poster_path"])})
+     if not '/' in str(a["title"]):
+         reslist.append({"title":str(a["title"]),"overview":str(a["overview"]),"imagepath":"https://image.tmdb.org/t/p/w500" + str(a["poster_path"])})
    return reslist
 
 

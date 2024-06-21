@@ -4,8 +4,9 @@ from django.views.generic import View
 from .models import Comment
 from movie.models import MyMovieModel
 from .forms import CommentForm, MovieFilterForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class CommentView(View):
+class CommentView(LoginRequiredMixin,View):
     def get(self, request):
         comment_form = CommentForm(user=request.user)
         filter_form = MovieFilterForm(request.GET or None)
