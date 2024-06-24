@@ -14,5 +14,4 @@ urlpatterns = [
     path("comment/", include("comment.urls")),
     path("mail/", include("mail.urls")),
     path("topic/", include("topic.urls")),
-    path('', include('social_django.urls', namespace='social')),
 ]
