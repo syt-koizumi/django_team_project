@@ -51,17 +51,19 @@ def like_comment(request, comment_id):
         user = request.user
 
         # 既に「いいね」しているか確認
-        if Like.objects.filter(user=user, comment=comment).exists():
-            return JsonResponse({'error': 'You have already liked this comment.'}, status=400)
-
-        # 「いいね」処理
-        Like.objects.create(user=user, comment=comment)
-        if not comment.likes:
-            comment.likes += 1
-        elif comment.likes:
+        existing_like = Like.objects.filter(user=user, comment=comment)
+        if existing_like:
+            # 「いいね」を取り消す
+            existing_like.delete()
             comment.likes -= 1
-        comment.save()
-        return JsonResponse({'likes': comment.likes})
+            comment.save()
+            return JsonResponse({'likes': comment.likes, 'message': 'Like removed'})
+        else:
+            # 「いいね」を追加
+            Like.objects.create(user=user, comment=comment)
+            comment.likes += 1
+            comment.save()
+            return JsonResponse({'likes': comment.likes, 'message': 'Like added'})
 
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
