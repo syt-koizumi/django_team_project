@@ -1,7 +1,8 @@
-<!-- comments.html -->
+comments.html
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'comment.css' %}">
   <h1>Comments</h1>
   
   <form method="post">
@@ -21,14 +22,15 @@
   <h2>All Comments</h2>
   <ul>
     {% for comment in comments %}
-      <li>
+      <li class="comment-list-content">
         <strong><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></strong><br>
-        <img src="{{ comment.imagepath }}" alt="" style="width: 100px;"><br>
-        by {{ comment.user }} on {{ comment.date }}<br>
-        評価: {{ comment.get_rating_display }}<br>
-        {{ comment.comment }}<br>
+        <img src="{{ comment.imagepath }}" alt="" style="width: 100px;">
+        <p>by {{ comment.user }} on {{ comment.date }}</p>
+        <p>評価: {{ comment.get_rating_display }}</p>
+        <p>{{ comment.comment }}</p>
         <button class="like-btn" data-id="{{ comment.id }}">Like</button>
         <span id="likes-{{ comment.id }}">{{ comment.likes }}</span> likes
+        <div class="error-message" id="error-{{ comment.id }}" style="color: red;"></div>
       </li>
     {% endfor %}
   </ul>
@@ -39,7 +41,7 @@
       $('.like-btn').click(function(){
         var commentId = $(this).data('id');
         var url = "{% url 'comment:like_comment' comment_id=0 %}".replace('0', commentId);
-        console.log(url);
+        console.log(url);  // 生成されたURLをコンソールに出力して確認する
         $.ajax({
           url: url,
           method: 'POST',
@@ -48,10 +50,12 @@
           },
           success: function(response) {
             $('#likes-' + commentId).text(response.likes);
+          },
+          error: function(xhr, status, error) {
+            $('#error-' + commentId).text(JSON.parse(xhr.responseText).error);
           }
         });
       });
     });
   </script>
-
 {% endblock %}
