@@ -1,7 +1,8 @@
 # views.py
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import View
-from .models import Comment
+from .models import Comment, Like
 from movie.models import MyMovieModel
 from .forms import CommentForm, MovieFilterForm
 
@@ -21,7 +22,7 @@ class CommentView(View):
         })
 
     def post(self, request):
-        comment_form = CommentForm(request.POST, request.FILES, user=request.user)  # request.FILESを追加
+        comment_form = CommentForm(request.POST, user=request.user)
         filter_form = MovieFilterForm(request.GET or None)
 
         if comment_form.is_valid():
@@ -41,3 +42,23 @@ class CommentView(View):
             'filter_form': filter_form,
             'comments': comments
         })
+    
+def like_comment(request, comment_id):
+    if request.method == "POST":
+        comment = get_object_or_404(Comment, id=comment_id)
+        user = request.user
+
+        # 既に「いいね」しているか確認
+        if Like.objects.filter(user=user, comment=comment).exists():
+            return JsonResponse({'error': 'You have already liked this comment.'}, status=400)
+
+        # 「いいね」処理
+        Like.objects.create(user=user, comment=comment)
+        if not comment.likes:
+            comment.likes += 1
+        elif comment.likes:
+            comment.likes -= 1
+        comment.save()
+        return JsonResponse({'likes': comment.likes})
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)

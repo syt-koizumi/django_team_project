@@ -20,5 +20,15 @@ class Comment(models.Model):
     comment = models.CharField(verbose_name="コメント", max_length = 1000)
     rating = models.IntegerField(choices=SCORE_CHOICES)
     date = models.DateTimeField(default=datetime.now(), verbose_name="投稿日")
+    likes = models.IntegerField(default=0)
+
     def __str__(self):
        return f'{self.movie_name.name} - {self.user.username}'
+    
+
+class Like(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='user_likes')
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='comment_comment')
+
+    class Meta:
+        unique_together = ('user', 'comment')
