@@ -15,7 +15,7 @@ class TMDB:
         return json.loads(res.text)   
 
     def search_movies(self, query):
-        params = {'query': query}
+        params = {'query': query, 'language': 'ja-JP', 'region': 'JP'}
         url = f'{self.base_url_}search/movie'
         return self._json_by_get_request(url, params)    
     
@@ -25,7 +25,8 @@ def gety(movie_name):
    res = api.search_movies(movie_name)
    reslist = []
    for a in res["results"]:
-     reslist.append({"title":str(a["original_title"]),"overview":str(a["overview"]),"imagepath":"https://image.tmdb.org/t/p/w500" + str(a["poster_path"])})
+     if not '/' in str(a["title"]):
+         reslist.append({"title":str(a["title"]),"overview":str(a["overview"]),"imagepath":"https://image.tmdb.org/t/p/w500" + str(a["poster_path"])})
    return reslist
 
 

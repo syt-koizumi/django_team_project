@@ -5,8 +5,9 @@ from django.views.generic import View
 from .models import Comment, Like
 from movie.models import MyMovieModel
 from .forms import CommentForm, MovieFilterForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class CommentView(View):
+class CommentView(LoginRequiredMixin,View):
     def get(self, request):
         comment_form = CommentForm(user=request.user)
         filter_form = MovieFilterForm(request.GET or None)
@@ -46,6 +47,7 @@ class CommentView(View):
 def like_comment(request, comment_id):
     if request.method == "POST":
         comment = get_object_or_404(Comment, id=comment_id)
+
         user = request.user
 
         # 既に「いいね」しているか確認
@@ -60,5 +62,6 @@ def like_comment(request, comment_id):
             comment.likes -= 1
         comment.save()
         return JsonResponse({'likes': comment.likes})
+
 
     return JsonResponse({'error': 'Invalid request'}, status=400)

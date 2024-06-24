@@ -23,6 +23,17 @@ class Mail_detail(DetailView):
         read_mail, created = ReadMail.objects.get_or_create(read_mail=mail,user=request.user)
         if not created:
             read_mail.read_count += 1
-            read_mail.save()
-        # ReadMail.objects.create(read_mail=self.get_object(), user=request.user)
+        read_mail.save()
         return response
+
+class Unread_list(View):
+    def get(self, request):
+        all_mails = Mail.objects.all()
+        read_mails = ReadMail.objects.filter(user=request.user).values_list('read_mail', flat=True)
+        unread = all_mails.exclude(id__in=read_mails).order_by('-dtcreated')
+        return render(request, 'mail/unread_mail_box.html', {
+            'mails':unread
+        })
+    
+    
+
