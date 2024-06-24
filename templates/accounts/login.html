@@ -9,5 +9,7 @@
         <p>{{ form.as_p }}</p>
         <input type="submit" id="save" value=" ログイン ">
     </form>
+    <a onclick="location.href='{% url 'social:begin' 'twitter' %}'"  class="btn-push">Twitterログイン</a>
 </div>
+
 {% endblock %}
