@@ -23,17 +23,7 @@
             <li class="c-header__list-item"><a href='{% url "usersearch:user_search" %}' class="c-header__list-link">アカウント検索</a></li>
             <li class="c-header__list-item"><a href='{% url "consider:top" %}' class="c-header__list-link">映画診断</a></li>
             {% if user.is_authenticated %}
-            <li class="c-header__list-item"><span>{{ user.get_username }}</span></li>
-            {% endif %}
             <li class="c-header__list-item">
-              <form action="{% url 'accounts:logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="c-header__list-link">ログアウト</button>
-              </form>
-            </li>
-            <li class="c-header__list-item"><a href='{% url "mail:mail_list" %}' class="c-header__list-link" alt="メールアイコン">おしらせ</a></li>
-            <li class="c-header__list-item">
-            {% if user.is_authenticated %}
               <form action="{% url 'accounts:logout' %}" method="post">
                 {% csrf_token %}
                 <button class="logout">ログアウト</button>
