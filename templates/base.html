@@ -24,8 +24,8 @@
             <li class="c-header__list-item"><span>{{ user.get_username }}</span></li>
             <li class="c-header__list-item">
               <form action="{% url 'accounts:logout' %}" method="post">
-                {% csrf_token}
-                <button class="c-header__list-link">ログアウト</button>
+                {% csrf_token %}
+                <button type="submit" class="c-header__list-link">ログアウト</button>
               </form>
             </li>
             <li class="c-header__list-item"><a href='{% url "mail:mail_list" %}' class="c-header__list-link" alt="メールアイコン">おしらせ</a></li>

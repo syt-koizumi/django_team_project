@@ -2,7 +2,7 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import View
-from .models import Comment
+from .models import Comment, Like
 from movie.models import MyMovieModel
 from .forms import CommentForm, MovieFilterForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -47,7 +47,23 @@ class CommentView(LoginRequiredMixin,View):
 def like_comment(request, comment_id):
     if request.method == "POST":
         comment = get_object_or_404(Comment, id=comment_id)
-        comment.likes += 1
-        comment.save()
-        return JsonResponse({'likes': comment.likes})
+
+        user = request.user
+
+        # 既に「いいね」しているか確認
+        existing_like = Like.objects.filter(user=user, comment=comment)
+        if existing_like:
+            # 「いいね」を取り消す
+            existing_like.delete()
+            comment.likes -= 1
+            comment.save()
+            return JsonResponse({'likes': comment.likes, 'message': 'Like removed'})
+        else:
+            # 「いいね」を追加
+            Like.objects.create(user=user, comment=comment)
+            comment.likes += 1
+            comment.save()
+            return JsonResponse({'likes': comment.likes, 'message': 'Like added'})
+
+
     return JsonResponse({'error': 'Invalid request'}, status=400)

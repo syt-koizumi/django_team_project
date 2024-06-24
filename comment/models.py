@@ -24,3 +24,11 @@ class Comment(models.Model):
 
     def __str__(self):
        return f'{self.movie_name.name} - {self.user.username}'
+    
+
+class Like(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='user_likes')
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='comment_comment')
+
+    class Meta:
+        unique_together = ('user', 'comment')
