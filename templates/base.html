@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'base.css' %}">
     <link rel="icon" href="{% static 'img_folder/logo.ico' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -14,16 +13,23 @@
         <input type="checkbox" name="hamburger" id="hamburger" class="c-hamburger-menu__input"/><!-- 追記 idはlabelのforと同じにする -->
         <label for="hamburger" class="c-hamburger-menu__bg"></label><!-- 追記 ハンバーガーメニュを開いた時の背景 -->
         <ul class="c-header__list c-hamburger-menu__list">
+            {% if user.is_authenticated %}
+            <li class="c-header__list-item"><span  id="color">-{{ user.get_username }}-</span></li>
+            {% endif %}
             <li class="c-header__list-item"><a href='{% url "ranking:ranking" %}' class="c-header__list-link">ランキング</a></li>
             <li class="c-header__list-item"><a href='{% url "comment:comment" %}' class="c-header__list-link">コメント</a></li>
             <li class="c-header__list-item"><a href='{% url "movie:movie_search" %}' class="c-header__list-link">映画検索</a></li>
             <li class="c-header__list-item"><a href='{% url "mypage:mylist" %}' class="c-header__list-link">マイリスト</a></li>
             <li class="c-header__list-item"><a href='{% url "usersearch:user_search" %}' class="c-header__list-link">アカウント検索</a></li>
             <li class="c-header__list-item"><a href='{% url "consider:top" %}' class="c-header__list-link">映画診断</a></li>
-            {% if user.is_authenticated %}
-            <li class="c-header__list-item"><span>{{ user.get_username }}</span></li>
-            <li class="c-header__list-item"><a href='{% url "accounts:logout" %}' class="c-header__list-link">ログアウト</a></li>
             <li class="c-header__list-item"><a href='{% url "mail:mail_list" %}' class="c-header__list-link" alt="メールアイコン">おしらせ</a></li>
+            <li class="c-header__list-item">
+            {% if user.is_authenticated %}
+              <form action="{% url 'accounts:logout' %}" method="post">
+                {% csrf_token %}
+                <button class="logout">ログアウト</button>
+              </form>
+            </li>
             {% else %}
             <li class="c-header__list-item"><a href='{% url "accounts:login" %}' class="c-header__list-link">ログイン</a></li>
             <li class="c-header__list-item"><a href='{% url "accounts:custom_accounts_create" %}' class="c-header__list-link">アカウント登録</a></li>
@@ -36,19 +42,55 @@
         </label>
         </div>
     </header>
-    <style>
-        header{
-            z-index: 1000;
-        }
-           .c-header {
+<style>
+html,body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+        
+header{
+  z-index: 1000;
+}
+
+.c-header {
   align-items: center;
-  background-color: #000000; /* カスタマイズしてください */
+  background-color: #000000; 
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem; /* カスタマイズしてください */
+  padding: 1rem 2rem; 
   width: 100%;
 }
+
+.logout {
+  background-color:#ffff00; /* ボタンの背景色 */
+  border: none;
+  color: black; /* ボタンのテキスト色 */
+  padding: 10px 13px; /* ボタンのパディング */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 0px 2px 0px 0px;
+  cursor: pointer;
+  border-radius: 4px; /* ボタンの角丸 */
+  transition-duration: 0.4s;
+}
+
+/* ボタンのホバースタイル */
+.logout:hover {
+    background-color: #e6e6e6; /* ホバー時の背景色 */
+}
+
+#color {
+  color: #ffffff;
+  display: block;
+  font-size: 18px;
+  margin-right: 20px; 
+  padding: 8px 0px;
+}
+
 .logoimg{
     height: 70px;
     width: auto;
@@ -175,9 +217,10 @@
     .c-hamburger-menu__button-mark:nth-of-type(3) {
     transform: translate(2px, 3px) rotate(-45deg); /* カスタマイズしてください */
     transform-origin: 0%; /* カスタマイズしてください */
+
   }
 }
-     </style>
+</style>
     </header>
     {% block content %}
     

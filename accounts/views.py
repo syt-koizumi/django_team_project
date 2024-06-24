@@ -35,7 +35,7 @@ class Login(LoginView):
 
 class Logout(LogoutView):
     template_name = 'accounts/logout.html'
-    #next_page = '/accounts/login.html'
+    next_page = '/accounts/login'
 
 
 class Home(TemplateView):
