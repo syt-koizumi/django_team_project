@@ -4,7 +4,7 @@
 {% block content %}
 
 <!-- スライドの外枠 -->
-<div class="slide-wrapper">
+<div class="slide-wrapper" style="width:100%">
     <!-- スライド（コンテンツ） -->
     <div id="slide" class="slide">
       <div>
@@ -89,7 +89,7 @@
     </script>
 <style>
 
-body{
+.slide-wrapper{
   
   margin:0px;
   padding:0px;
@@ -97,6 +97,7 @@ body{
   background-image:url("/static/img_folder/file2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
 }
 /* ↓ スライドショー*/
 ul {
