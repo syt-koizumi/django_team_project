@@ -15,7 +15,7 @@ class TMDB:
         return json.loads(res.text)   
 
     def search_movies(self, query):
-        params = {'query': query}
+        params = {'query': query, 'language': 'ja-JP', 'region': 'JP'}
         url = f'{self.base_url_}search/movie'
         return self._json_by_get_request(url, params)    
 

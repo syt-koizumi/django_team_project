@@ -8,6 +8,12 @@
         {% csrf_token %}
         <p>{{ form.as_p }}</p>
         <input type="submit" id="save" value=" ログイン ">
-    </form>
+    </form><br>
+    <div align="center">
+        <button type="button" class="button"
+        onclick="location.href='{% url 'social:begin' 'twitter' %}?next={{ next }}'">
+        X(Twitter) でログイン</button>
+    </div>
 </div>
+
 {% endblock %}
