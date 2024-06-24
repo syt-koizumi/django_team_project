@@ -24,6 +24,7 @@
             <li class="c-header__list-item"><a href='{% url "consider:top" %}' class="c-header__list-link">映画診断</a></li>
             {% if user.is_authenticated %}
             <li class="c-header__list-item"><span>{{ user.get_username }}</span></li>
+            {% endif %}
             <li class="c-header__list-item">
               <form action="{% url 'accounts:logout' %}" method="post">
                 {% csrf_token %}
