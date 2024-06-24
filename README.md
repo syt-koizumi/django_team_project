@@ -13,5 +13,5 @@ Set-ExecutionPolicy RemoteSigned -Scope Process <br>
 env\Scripts\activate.bat
 
 
-##追加でインストールするもの
+## 追加でインストールするもの<br>
 pip install social-auth-app-django
