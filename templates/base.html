@@ -26,6 +26,7 @@
             <li class="c-header__list-item">
               <form action="{% url 'accounts:logout' %}" method="post">
                 {% csrf_token %}
+                <li class="c-header__list-item"><a href='{% url "consider:top" %}' class="c-header__list-link">お知らせ</a></li>
                 <button class="logout">ログアウト</button>
               </form>
             </li>

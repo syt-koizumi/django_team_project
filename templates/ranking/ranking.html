@@ -2,41 +2,24 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'ranking.css' %}">
-<h1>映画ランキングTOP10</h1>
-
-{% for mv in movies %}
-  <h2>{{ forloop.counter }}位</h2>
-  <a href={% url "movie:movie_detail" mv.name %}><img src="{{ mv.imagepath }}" alt="映画の画像" width="100px"></a>
-  <a href={% url "movie:movie_detail" mv.name %}>{{ mv.name }}</a>
-  {{ mv.movie_count }}
-  {{ mv.overview }}
-{% endfor %}
-{% endblock %}
-
-<!--
-<h1>映画ランキングTOP10</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>ランキング</th>
-        <th>タイトル</th>
-        <th>登録数</th>
-        <th>説明</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- <p>{{ movies }}</p> -->
-      <!-- {{ movies }} -->
+<main>
+  <h1>映画ランキング<span class="top10"> TOP10</span></h1>
+  <ul class="movie">
       {% for mv in movies %}
-  
-        <tr>
-        <th>{{ mv.rank }}位</th>
-        <td><a href={% url "movie:movie_detail" mv.name  %}><img src="{{ mv.imagepath }}" alt="映画の画像" width="100px"></a></td>
-        <td><a href={% url "movie:movie_detail" mv.name %}>{{ mv.name }}</a></td>
-        <td>{{ mv.movie_count }}</td>登録者数
-        <td class="overview">{{ mv.overview }}</td>詳細説明
-        </tr>
+      <div class="movie-list">
+        <h2><span class="rank">{{ forloop.counter }}</span>位</h2>
+        <li class="movie-info">
+            <a class = "movie-link" href={% url "movie:movie_detail" mv.name %}>
+                <img src="{{ mv.imagepath }}" alt="本の画像">
+                <div class="movie-name">
+                    <p>{{ mv.name }}</p>
+                </div>
+            </a>
+            <p class = "overview">{{ mv.overview }}</p>
+            <p class = "like"><span class="count">{{ mv.movie_count }}</span> 人がお気に入り中！</p>
+        </li>
+      </div>
       {% endfor %}
-    </tbody>
-  </table>
-{% endblock %}-->
+  </ul>
+</main>
+{% endblock %}
