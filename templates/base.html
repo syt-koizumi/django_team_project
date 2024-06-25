@@ -22,11 +22,11 @@
             <li class="c-header__list-item"><a href='{% url "mypage:mylist" %}' class="c-header__list-link">マイリスト</a></li>
             <li class="c-header__list-item"><a href='{% url "usersearch:user_search" %}' class="c-header__list-link">アカウント検索</a></li>
             <li class="c-header__list-item"><a href='{% url "consider:top" %}' class="c-header__list-link">映画診断</a></li>
+            <li class="c-header__list-item"><a href='{% url "mail:mail_list" %}' class="c-header__list-link">お知らせ</a></li>
             {% if user.is_authenticated %}
             <li class="c-header__list-item">
               <form action="{% url 'accounts:logout' %}" method="post">
                 {% csrf_token %}
-                <li class="c-header__list-item"><a href='{% url "consider:top" %}' class="c-header__list-link">お知らせ</a></li>
                 <button class="logout">ログアウト</button>
               </form>
             </li>

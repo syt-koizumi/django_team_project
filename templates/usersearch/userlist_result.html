@@ -1,109 +1,267 @@
-<!-- user_movies.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'base.css' %}">
     <link rel="icon" href="{% static 'img_folder/logo.ico' %}">
+    <link rel="stylesheet" href="{% static 'mylist.css' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <header class="header">
-        <div class="taitlelogo">
-            <a href='{% url "toppage:toppage" %}'><img src="{% static 'img_folder/logo.jpg' %}" alt="トップページへ"></a>
-        </div>
-        <div class="menu-list">
-            <ul class="menu">
-                <li><a href='{% url "accounts:custom_accounts_create" %}'>アカウント登録</a></li>
-                <li><a href='{% url "movie:movie_search" %}'>映画検索</a></li>
-                <li><a href='{% url "mypage:mylist" %}'>マイリスト</a></li>
-                <li><a href='{% url "usersearch:user_search" %}'>アカウント一覧</a></li>
-                {% if user.is_authenticated %}
-                <li><span>{{ user.get_username }}</span><span>の映画リストを閲覧中です</span></li>
-                <li>
-                    <form action='{% url "accounts:logout" %}' method='post' name='logout'>
-                        {% csrf_token %}
-                        <input type="submit" value="ログアウト">
-                    </form>
-                </li>
-                {% else %}
-                <li>
-                <form action='{% url "accounts:login" %}' method='post' name='logout'>
-
-                    {% csrf_token %}
-                    <input type="submit" value="ログイン" class="login-button">
-                </form></li>
-                {% endif %}
-            </ul>
+    <header class="c-header c-hamburger-menu">
+       <a href='{% url "toppage:toppage" %}'><img class="logoimg" src="{% static 'img_folder/logo.jpg' %}" alt="トップページへ"></a>
+        <input type="checkbox" name="hamburger" id="hamburger" class="c-hamburger-menu__input"/><!-- 追記 idはlabelのforと同じにする -->
+        <label for="hamburger" class="c-hamburger-menu__bg"></label><!-- 追記 ハンバーガーメニュを開いた時の背景 -->
+        <ul class="c-header__list c-hamburger-menu__list">
+            {% if user.is_authenticated %}
+            <li><span>{{ user.get_username }}</span><span>の映画リストを閲覧中です</span></li>
+            {% endif %}
+            <li class="c-header__list-item"><a href='{% url "ranking:ranking" %}' class="c-header__list-link">ランキング</a></li>
+            <li class="c-header__list-item"><a href='{% url "comment:comment" %}' class="c-header__list-link">コメント</a></li>
+            <li class="c-header__list-item"><a href='{% url "movie:movie_search" %}' class="c-header__list-link">映画検索</a></li>
+            <li class="c-header__list-item"><a href='{% url "mypage:mylist" %}' class="c-header__list-link">マイリスト</a></li>
+            <li class="c-header__list-item"><a href='{% url "usersearch:user_search" %}' class="c-header__list-link">アカウント検索</a></li>
+            <li class="c-header__list-item"><a href='{% url "consider:top" %}' class="c-header__list-link">映画診断</a></li>
+            <li class="c-header__list-item"><a href='{% url "mail:mail_list" %}' class="c-header__list-link">お知らせ</a></li>
+            {% if user.is_authenticated %}
+            <li class="c-header__list-item">
+              <form action="{% url 'accounts:logout' %}" method="post">
+                {% csrf_token %}
+                <button class="logout">ログアウト</button>
+              </form>
+            </li>
+            {% else %}
+            <li class="c-header__list-item"><a href='{% url "accounts:login" %}' class="c-header__list-link">ログイン</a></li>
+            <li class="c-header__list-item"><a href='{% url "accounts:custom_accounts_create" %}' class="c-header__list-link">アカウント登録</a></li>
+            {% endif %}
+        </ul>
+        <label for="hamburger" class="c-hamburger-menu__button"><!-- 追記 ハンバーガーメニューのボタン -->
+            <span class="c-hamburger-menu__button-mark"></span>
+            <span class="c-hamburger-menu__button-mark"></span>
+            <span class="c-hamburger-menu__button-mark"></span>
+        </label>
         </div>
     </header>
-
 <style>
-  body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+html,body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+        
+header{
+  z-index: 1000;
+}
+
+.c-header {
+  align-items: center;
+  background-color: #000000; 
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem; 
+  width: 100%;
+}
+
+.logout {
+  background-color:#ffff00; /* ボタンの背景色 */
+  border: none;
+  color: black; /* ボタンのテキスト色 */
+  padding: 10px 13px; /* ボタンのパディング */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 0px 2px 0px 0px;
+  cursor: pointer;
+  border-radius: 4px; /* ボタンの角丸 */
+  transition-duration: 0.4s;
+}
+
+/* ボタンのホバースタイル */
+.logout:hover {
+    background-color: #e6e6e6; /* ホバー時の背景色 */
+}
+
+#color {
+  color: #ffffff;
+  display: block;
+  font-size: 18px;
+  margin-right: 20px; 
+  padding: 7px 0px;
+}
+
+.logoimg{
+    height: 70px;
+    width: auto;
+}
+.c-header__logo {
+  color: #000; /* カスタマイズしてください */
+  min-width: 80px; /* カスタマイズしてください */
+  text-decoration: none;
+}
+
+.c-header__list {
+  box-sizing: border-box;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  
+}
+.c-header__list-item {
+  list-style: none;
+  text-decoration: none;
+}
+
+.c-header__list-link {
+  color: #ffffff; /* カスタマイズしてください */
+  display: block;
+  margin-right: 20px; /* カスタマイズしてください */
+  text-decoration: none;
+  padding: 10px 0px; /* カスタマイズしてください */
+}
+
+.c-header__list-link:hover {
+  filter: opacity(0.6); /* カスタマイズしてください */
+}
+
+.c-hamburger-menu {
+  position: relative;
+}
+
+@media screen and (max-width: 750px) {
+  .c-hamburger-menu__list {
+    background-color: #000000; /* カスタマイズしてください */
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    padding: 2rem; /* カスタマイズしてください */
+    position: absolute;
+    transform: translateX(-100%);
+    transition: 0.3s; /* カスタマイズしてください */
+    top: 100%;
+    width: 100%;
   }
 
-  header {
-      background-color: #333;
-      color: #fff;
-      padding: 10px;
-      text-align: center;
+  #hamburger:checked ~ .c-hamburger-menu__list {
+    transform: translateX(0%);
+    transition: 0.3s;
   }
+}
 
-  main {
-      padding: 20px;
-  }
+.c-hamburger-menu__input {
+  display: none;
+}
 
-  .book {
-      display: inline-block;
-      margin: 10px;
-      text-align: center;
-  }
+.c-hamburger-menu__bg {
+  background-color: #000; /* カスタマイズしてください */
+  cursor: pointer;
+  display: none;
+  height: 100vh;
+  left: 0;
+  opacity: 0.4; /* カスタマイズしてください */
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
 
-  .book img {
-      width: 150px;
-      height: 200px;
-  }
+#hamburger:checked ~ .c-hamburger-menu__bg {
+  display: block;
+}
 
-  .book p {
-      font-size: 14px;
-      margin-top: 5px;
-  }
+.c-hamburger-menu__button {
+  display: none;
+}
 
-  button {
-      background-color: #4CAF50;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-      border-radius: 5px;
+@media screen and (max-width: 750px) {
+  .c-hamburger-menu__button {
+    align-items: center;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* カスタマイズしてください */
+    height: 32px; /* カスタマイズしてください */
+    justify-content: center;
+    width: 32px; /* カスタマイズしてください */
+    
   }
+}
+
+.c-hamburger-menu__button-mark {
+  background-color:white; /* カスタマイズしてください */
+  display: block;
+  height: 1px; /* カスタマイズしてください */
+  transition: 0.3s; /* カスタマイズしてください */
+  width: 20px; /* カスタマイズしてください */
+}
+
+@media screen and (max-width: 750px) {
+  #hamburger:checked
+    ~ .c-hamburger-menu__button
+    .c-hamburger-menu__button-mark:nth-of-type(1) {
+    transform: translate(2px, 1px) rotate(45deg); /* カスタマイズしてください */
+    transform-origin: 0%; /* カスタマイズしてください */
+  }
+  #hamburger:checked
+    ~ .c-hamburger-menu__button
+    .c-hamburger-menu__button-mark:nth-of-type(2) {
+    opacity: 0;
+  }
+  #hamburger:checked
+    ~ .c-hamburger-menu__button
+    .c-hamburger-menu__button-mark:nth-of-type(3) {
+    transform: translate(2px, 3px) rotate(-45deg); /* カスタマイズしてください */
+    transform-origin: 0%; /* カスタマイズしてください */
+
+  }
+}
 </style>
+    </header>
+    {% block content %}
 
-
-
-
-  <h1>{{ user.username }}'s Movies</h1>
-  <ul>
+    <h1>{{ user.username }}'s Movies</h1>
+    <ul class="book-list">
     {% for movie in movies %}
     <div class="book">
-      <a href="{% url 'movie:movie_detail' movie.name %}">
-        <img src="{{ movie.imagepath }}" alt="">
-        <p>{{ movie.name }}</p>
-    </a>
+        <a href="{% url 'movie:movie_detail' movie.name %}">
+            <img src="{{ movie.imagepath }}" alt="">
+            <p>{{ movie.name }}</p>
+        </a>
     </div>
       
     {% endfor %}
-  </ul>
-
+    </ul>
+    
+    {% endblock %}
+    
 </body>
 </html>
+
+<!--
+<body>
+  <header class="header">
+    <div class="navtext-container">
+      <div class="navtext">company</div>
+    </div>
+    <input type="checkbox" class="menu-btn" id="menu-btn">
+    <label for="menu-btn" class="menu-icon"><span class="navicon"></span></label>
+    <ul class="menu">
+      <li class="top"><a href="#home">home</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+
+  </header>
+
+</body>
+
+</html>
+-->
+

@@ -2,9 +2,10 @@ from django.shortcuts import render,redirect
 from django.views.generic import ListView, DetailView, View
 from .models import Mail,ReadMail
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 # from .forms import CheckMailForm
 
-class Mail_list(View):
+class Mail_list(LoginRequiredMixin, View):
     def get(self, request):
         mails = Mail.objects.all().order_by('-dtcreated')
 
