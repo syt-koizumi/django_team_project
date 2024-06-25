@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'comment.css' %}">
-  <article>
+
     <div class="comment">
       <h1>Comments</h1>
       <form method="post">
@@ -20,25 +20,21 @@
         <button class="head" type="submit">Filter</button>
       </form>
     </div>
-  </article>
-  <div class="all-comments">
-    <h2>All Comments</h2>
-    <ul>
+    <div class="title">
+      <h1>< コメント一覧 ></h1>
+    </div>
       {% for comment in comments %}
         <li class="comment-list-content">
-          <strong><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></strong><br>
-          <img src="{{ comment.imagepath }}" alt="" style="width: 100px;">
-          <p>by {{ comment.user }} on {{ comment.date }}</p>
-          <p>評価: {{ comment.get_rating_display }}</p>
+            <img src="{{ comment.imagepath }}" alt="">
+          <h2><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></h2>
+          <p>ユーザー名：{{ comment.user }}  / 日時：{{ comment.date }}  / 評価：{{ comment.get_rating_display }}</p>
           <p>{{ comment.comment }}</p>
           <button class="like-btn" data-id="{{ comment.id }}">Like</button>
-          <span class="like-cnt" id="likes-{{ comment.id }}">{{ comment.likes }}</span>
-          <span class="like-word">likes</span>
+          <p><span class="like-cnt" id="likes-{{ comment.id }}">{{ comment.likes }}</span> likes</p>
           <div class="error-message" id="error-{{ comment.id }}" style="color: red;"></div>
         </li>
       {% endfor %}
-    </ul>
-  </div>
+
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
