@@ -1,0 +1,159 @@
+body {
+    text-align: center;
+}
+
+main * {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    display: inline;
+    text-align: center;
+    width: 90%;
+}
+
+main .movie {
+    
+}
+
+main .movie .movie-list {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main .movie .movie-list .movie-info {
+    /* border: 3px solid #1db8db; */
+    background-image: linear-gradient(45deg, #ffffff, #1db8db 50%, black);
+    padding: 10px 10px 5px 10px;
+    margin: 0 20px 0 20px;
+    border-radius: 16px;
+}
+
+main .movie .movie-list .movie-info .movie-link {
+    display: block;
+    background-color: #ffffff;
+    border-radius: 16px;
+    margin: 10px;
+    padding: 10px;
+    
+}
+
+main .movie .movie-list .movie-info .movie-link .movie-name {
+    padding: 5px 5px 0 5px;
+}
+
+h1 {
+    font-size: 30px;
+    padding: 20px 0 10px 0;
+
+}
+
+h2 {
+    text-align: left;
+    padding: 15px 0 0 20px;
+}
+
+ul {
+    list-style: none;
+}
+
+main a {
+    text-decoration: none;
+    color: #1db8db;
+}
+
+/* ボタンの基本スタイル */
+main a {
+    position: relative;
+    display: block;
+    background-color: #21BE78;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1db8db;
+    line-height: 1.6;
+    text-decoration: none;
+    text-align: center;
+    transition: .2s;
+    box-sizing: border-box;
+}
+
+main a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 25px;
+    width: 9px;
+    height: 9px;
+    margin: auto;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+    transition: .2s;
+    box-sizing: border-box;
+}
+  
+/* ホバー時のスタイル */
+main a {
+    box-shadow: 0 10px 10px -5px rgba(0,0,0,0.25);
+    transform: translateY(-4px);
+}
+
+main a:hover {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+img {
+    height: 350px;
+    width: auto;
+    border-radius: 10px;
+    margin: 10px 10px 0 10px;
+}
+
+span {
+    color: #1db8db;
+}
+
+.top10 {
+    
+}
+
+.rank {
+    font-size: 35px;
+}
+
+.overview {
+    text-align: left;
+    color: #1db8db;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px 10px 10px 10px;
+}
+
+.like {
+    color: #1db8db;
+    font-weight: bold;
+    padding: 5px 10px 5px 10px;
+    margin: 20px 10px 10px 10px;
+    border-radius: 16px;
+    width: 70%;
+    background-color: #ffffff;
+}
+
+.count {
+    color: #f44b8f;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+@media screen and (max-width:520px) {
+    main .movie .movie-list {
+        width: 100%;
+    }
+}
