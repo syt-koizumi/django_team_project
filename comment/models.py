@@ -19,7 +19,7 @@ class Comment(models.Model):
     user = models.ForeignKey(CustomUser,verbose_name="追加したユーザー", on_delete=models.CASCADE)
     comment = models.CharField(verbose_name="コメント", max_length = 1000)
     rating = models.IntegerField(choices=SCORE_CHOICES)
-    date = models.DateTimeField(default=datetime.now(), verbose_name="投稿日")
+    date = models.DateTimeField(auto_now_add=True, verbose_name="投稿日")
     likes = models.IntegerField(default=0)
 
     def __str__(self):
