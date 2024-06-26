@@ -4,11 +4,13 @@
 <link rel="stylesheet" href="{% static 'login.css' %}">
 <div class="login">
     <h2> ログインページ </h2>
+    <a href='{% url "accounts:custom_accounts_create" %}' style="text-decoration: none; padding-bottom: 10px;">アカウント登録</a>
     <form method="post" action="">
         {% csrf_token %}
         <p>{{ form.as_p }}</p>
         <input type="submit" id="save" value=" ログイン ">
     </form><br>
+    
     <div align="center">
         <button type="button" class="button"
         onclick="location.href='{% url 'social:begin' 'twitter' %}?next={{ next }}'">
