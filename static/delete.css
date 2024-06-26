@@ -1,0 +1,106 @@
+main {
+    text-align: center;
+    margin-top: 100px;
+    height: 400px;
+}
+
+main div {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 16px;
+    height: 40%;
+    width: 40%;
+    margin: 0 0 10px 0;
+    padding: 30px;
+    position: relative;
+}
+
+main div h2 {
+    margin: 20px 0 50px 0;
+}
+
+main div form {
+    padding: 10px 0 0 0;
+}
+
+main div form input {
+    width: 80px;
+    padding: 10px;
+    background-color: #fd3254;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+main div form input::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+}
+
+main div form input:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+main div form input:active::before {
+    transform: translate(-50%, -50%) scale(0);
+}
+
+main div form input:hover {
+    transform: translateY(-5px);
+}
+
+
+main a {
+    display: block;
+    margin-top: 50px;
+    margin-right: 28%;
+    text-align: right;
+}
+
+main a button {
+    width: 180px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+main a button:hover {
+    background-color: #45a049; /* ホバー時の色 */
+    transform: scale(1.05); /* 少し拡大する */
+}
+
+main a button:active {
+    transform: scale(0.95); /* クリック時に少し縮小する */
+}
+
+@media screen and (max-width:520px) {
+    main div h2 {
+        margin: 10px 0 50px 0;
+    }
+    main div {
+        height: 35%;
+        width: 65%;
+        padding: 20px 20px 15px 20px;
+    }
+    main a {
+        margin-right: 15%;
+    }
+}

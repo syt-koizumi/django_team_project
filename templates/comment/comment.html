@@ -8,32 +8,43 @@
       <form method="post">
         {% csrf_token %}
         {{ comment_form.as_p }}
-        <button class="head" type="submit">Post Comment</button>
+        <button class="head" type="submit">送信</button>
       </form>
+      <hr>
     </div>
 
-    <!-- Movie Filtering Form -->
     <div class="filter">
       <h2>Filter</h2>
       <form method="get">
         {{ filter_form.as_p }}
-        <button class="head" type="submit">Filter</button>
+        <button class="head" type="submit">絞り込み検索</button>
       </form>
+      <hr>
     </div>
-    <div class="title">
-      <h1>< コメント一覧 ></h1>
-    </div>
-      {% for comment in comments %}
+    <main>
+      <div class="list">
+        <h1>ーコメント覧ー</h1>
+      </div>
+        <ul class="comment-list">
+        {% for comment in comments %}
         <li class="comment-list-content">
+          <div class="img">
             <img src="{{ comment.imagepath }}" alt="">
-          <h2><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></h2>
-          <p>ユーザー名：{{ comment.user }}  / 日時：{{ comment.date }}  / 評価：{{ comment.get_rating_display }}</p>
-          <p>{{ comment.comment }}</p>
-          <button class="like-btn" data-id="{{ comment.id }}">Like</button>
-          <p><span class="like-cnt" id="likes-{{ comment.id }}">{{ comment.likes }}</span> likes</p>
-          <div class="error-message" id="error-{{ comment.id }}" style="color: red;"></div>
+          </div>
+          <div class="comment-info">
+            <h3><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></h3>
+            <p>ユーザー名：{{ comment.user }}</p>
+            <p>日時：{{ comment.date |date:"MD"}}</p>
+            <p>評価：{{ comment.get_rating_display }}</p>
+            <p>{{ comment.comment }}</p>
+            <button class="like-btn" data-id="{{ comment.id }}">Like</button>
+            <p><span class="like-cnt" id="likes-{{ comment.id }}">{{ comment.likes }}</span> likes</p>
+            <div class="error-message" id="error-{{ comment.id }}"></div>
+          </div>
         </li>
-      {% endfor %}
+        {% endfor %}
+      </ul>
+    </main>
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -60,3 +71,28 @@
     });
   </script>
 {% endblock %}
+
+
+<!--
+<section class="get-in-touch">
+   <h1 class="title">Get in touch</h1>
+   <form class="contact-form row">
+      <div class="form-field col x-50">
+         <input id="name" class="input-text js-input" type="text" required>
+         <label class="label" for="name">Name</label>
+      </div>
+      <div class="form-field col x-50">
+         <input id="email" class="input-text js-input" type="email" required>
+         <label class="label" for="email">E-mail</label>
+      </div>
+      <div class="form-field col x-100">
+         <input id="message" class="input-text js-input" type="text" required>
+         <label class="label" for="message">Message</label>
+      </div>
+      <div class="form-field col x-100 align-center">
+         <input class="submit-btn" type="submit" value="Submit">
+      </div>
+   </form>
+</section>
+<p class="note">Based on <a class="link" href="http://redcollar.digital/contacts/" target="blank">Red Collar Contact Form</a>.</p>
+-->

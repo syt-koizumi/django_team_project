@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-<p>{{ mail.text }}</p>
-
+<link rel="stylesheet" href="{% static 'detail_mail.css' %}">
+<div class="container">
+    <p>{{ mail.text }}</p>
+    <hr>
+    <a href="{% url 'mail:mail_list' %}"><button class="btn">お知らせ一覧へ</button></a>
+</div>
 {% endblock %}
