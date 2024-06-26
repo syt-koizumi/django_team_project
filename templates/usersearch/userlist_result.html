@@ -223,21 +223,21 @@ header{
 }
 </style>
     </header>
-    {% block content %}
 
-    <h1>{{ user.username }}'s Movies</h1>
-    <ul class="book-list">
-    {% for movie in movies %}
-    <div class="book">
-        <a href="{% url 'movie:movie_detail' movie.name %}">
-            <img src="{{ movie.imagepath }}" alt="">
-            <p>{{ movie.name }}</p>
-        </a>
-    </div>
-      
-    {% endfor %}
-    </ul>
-    
+    {% block content %}
+    <main>
+        <h1>{{ user.username }}'s Movies List</h1>
+        <ul class="book-list">
+        {% for movie in movies %}
+        <div class="book">
+            <a href="{% url 'movie:movie_detail' movie.name %}">
+                <img src="{{ movie.imagepath }}" alt="">
+                <p>{{ movie.name }}</p>
+            </a>
+        </div>
+        {% endfor %}
+        </ul>
+    </main>    
     {% endblock %}
     
 </body>
