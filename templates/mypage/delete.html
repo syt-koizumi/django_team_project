@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>deletepage</title>
-</head>
-<body>
-    <h2>本当に削除しますか？</h2>
-    <form method="POST" >
-        {% csrf_token %}
-        <input type="submit" value="Delete">
-    </form>
-    <a href={% url "mypage:mylist" %}><button class="mylist-btn">マイリストに戻る</button></a>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'delete.css' %}">
+    <main>
+        <div>
+            <h2>本当に削除しますか？</h2>
+            <form method="POST" >
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+        <a href={% url "mypage:mylist" %}><button class="mylist-btn">マイリストに戻る</button></a>
+    </main>
+{% endblock %}
