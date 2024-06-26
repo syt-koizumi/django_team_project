@@ -1,0 +1,88 @@
+/* 全体のコンテナ */
+.btn {
+    background-color: #007bff; /* ボタンの背景色 */
+    margin-top: 7px;
+    color: #fff; /* ボタンのテキスト色 */
+    border: none; /* 枠線を削除 */
+    padding: 10px 20px; /* パディング */
+    cursor: pointer; /* カーソルをポインターに */
+    border-radius: 30px; /* 角丸 */
+    font-weight: bold;
+    font-size: 18px; /* フォントサイズ */
+    text-transform: uppercase; /* テキストを大文字に */
+    outline: none; /* フォーカス時の枠線を削除 */
+    position: relative; /* 相対位置 */
+    overflow: hidden; /* オーバーフローを隠す */
+    transition: background-color 0.3s, transform 0.3s; /* ホバー時のトランジション */
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3); /* 影 */
+    z-index: 1; /* オーバーレイの順序 */
+  }
+  
+  /* ボタンのホバースタイル */
+  .btn:hover {
+    background-color: #0056b3; /* ホバー時の背景色 */
+    transform: translateX(3px); /* 上に少し移動 */
+  }
+  
+  /* ボタンのアクティブスタイル */
+  .btn:active {
+    transform: translateX(0); /* アクティブ時の移動を元に戻す */
+  }
+  
+  /* ボタンのインナー */
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.1); /* 背景色 */
+    transition: opacity 0.3s, transform 0.3s; /* トランジション */
+    transform: translate(-50%, -50%) rotate(45deg); /* 回転 */
+    z-index: -1; /* 背景の順序 */
+    opacity: 0; /* 不透明度 */
+  }
+  
+  
+  .btn:hover::before {
+    opacity: 1; /* 不透明度 */
+    transform: translate(-50%, -50%) rotate(0deg); 
+  }
+  
+
+h1 {
+    margin-top: 50px;
+    text-align: center;
+}
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 13px;
+    background-color: #ffffff; 
+  }
+  
+  /* ヘッダー部分のスタイル */
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* メール項目のスタイル */
+  .mail-item {
+    margin-bottom: 10px;
+  }
+  
+  .mail-item h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  
+  

@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+<link rel="stylesheet" href="{% static 'mail_box.css' %}">
 <h1>ーお知らせ一覧ー</h1>
-<a href="{% url 'mail:unread_mail_list' %}"><button>未読一覧</button></a>
-
-<div class="content">
-    {% for mail in mails %}
-    <div>
-        <h3>件名：{{ mail.title }}</h3>
-        <a href="{% url 'mail:mail_detail' mail.id %}">詳細</a>
+<div class="container">
+    <div class="header">
+        <h1>メール一覧</h1>
     </div>
-        <p>-------------------</p>
-    {% endfor %}
-{% endblock %}
+    <div class="content">
+        {% for mail in mails %}
+        <div class="mail-item">
+            <h3>件名：{{ mail.title }}</h3>
+            <a href="{% url 'mail:mail_detail' mail.id %}" class="detail-link">詳細を見る</a>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+    <a href="{% url 'mail:unread_mail_list' %}"><button class="btn" >未読一覧</button></a>
 </div>
+{% endblock %}

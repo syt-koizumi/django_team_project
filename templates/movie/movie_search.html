@@ -8,7 +8,6 @@
             <h1 class="display-4">映画を検索する</h1>
             <p class="lead">好きな映画を検索してみましょう。</p>
             <hr class="my-4">
-        
             <form id="search-form" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}

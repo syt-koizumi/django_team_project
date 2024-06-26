@@ -4,6 +4,9 @@ from django.views.generic import TemplateView
 from .models import ThisWeekMovies
 from datetime import datetime, timedelta
 
+class OpeningView(TemplateView):
+    template_name = "toppage/opening.html"
+
 class TopPageView(TemplateView):
     template_name = "toppage/toppage.html"
     def get_context_data(self, **kwargs):
