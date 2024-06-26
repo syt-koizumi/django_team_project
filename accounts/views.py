@@ -11,7 +11,7 @@ class AccountCreateView(generic.CreateView):
     Model = User
     form_class = UserCreationForm
     template_name = 'accounts/accounts_create.html'
-    success_url = "/accounts/accounts_create"
+    success_url = "/accounts/login"
 
 
 class AccountCreateViewUsingMyForm(generic.CreateView):
@@ -25,13 +25,12 @@ class CustomAccountCreationView(generic.CreateView):
     Model = CustomUser
     form_class = CustomUserCreationForm
     template_name = 'accounts/accounts_create.html'
-    success_url = '/accounts/custom_accounts_create'
+    success_url = '/accounts/login'
 
 class Login(LoginView):
     template_name = 'accounts/login.html'
     authentication_form = LoginAuthenticationForm
     
-
 
 class Logout(LogoutView):
     template_name = 'accounts/logout.html'

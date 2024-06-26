@@ -11,7 +11,6 @@ class UserSearchView(FormView):
     def form_valid(self, form):
         username = form.cleaned_data['username']
         users = CustomUser.objects.filter(username__icontains=username)
-        print(f"Searching for users with username containing '{username}': {users}")
         return self.render_to_response(self.get_context_data(users=users))
     
 
@@ -22,7 +21,6 @@ class UserMoviesView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["username"] = "aaaaa"
         context['movies'] = MyMovieModel.objects.filter(createUser=self.object)
         return context
 
