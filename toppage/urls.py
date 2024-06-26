@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.urls import path,include
-from .views import TopPageView
+from .views import TopPageView,OpeningView
 app_name = "toppage"
 urlpatterns = [
-    path('', TopPageView.as_view(),name = "toppage"),
+    path('', OpeningView.as_view(),name = "opening"),
+    path('toppage', TopPageView.as_view(),name = "toppage"),
     
 ]

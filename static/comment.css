@@ -1,76 +1,219 @@
+/* コメント一覧全体のスタイル */
+/* 全体のコンテナ */
+hr {
+  border-top: 2px solid;
+  margin-top: 22px;
+  color: #eeeeee;
+}
 
+.comment-container {
+  display: flex;
+  justify-content: space-around;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* コメントセクション */
 .comment {
-    background: linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(173, 254, 235) 0%, rgb(0, 214, 164) 39%, rgb(0, 193, 157) 54%, rgb(0, 198, 181) 74%, rgb(0, 187, 255) 100%);
-    margin: 80px 30px 30px 30px;
-    border-radius: 16px;
+  flex: 1;
+  margin-right: 20px;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .comment h1 {
-    text-align: center;
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
 }
 
-label {
-    font-size: 20px;
-    padding-left: 30px;
-    -bottom: 30px;
+.comment .head {
+  margin-top: 8px;
+  font-weight: bold;
+  background-color: #007bff;
+  border: none;
+  padding: 10px 15px 10px 15px;
+  cursor: pointer;
+  border-radius: 7px;
+  color: #fff; /* テキスト色を白に */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* アニメーションの設定 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 初期の影 */
 }
 
-.title {
-    text-align: center;
-  }
+.comment .head:hover {
+  background-color: #0056b3; /* ホバー時の背景色 */
+  transform: translateX(3px); /* 少し上に移動 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* ホバー時の影 */
+}
 
-  .comment-list-content {
-    background: linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(173, 254, 235) 0%, rgb(0, 214, 164) 39%, rgb(0, 193, 157) 54%, rgb(0, 198, 181) 74%, rgb(0, 187, 255) 100%);
-    border-radius: 16px;
-    padding: 6px;
-    padding: 15px;
-    margin-bottom: 0px;
-    list-style: none;
-    margin: 30px 30px 30px 30px;
-  }
+.comment .head:active {
+  transform: translateX(0); /* クリック時に移動を元に戻す */
+  box-shadow: none; /* クリック時に影を削除 */
+}
 
-  .comment-list-content img {
-    border-radius: 13px;
-    width: 180px;
-  }
+.comment .head:hover {
+  background-color: #0056b3;
+}
 
-  .comment-list-content h3 {
-    font-size: 1.2em;
-    margin-bottom: 5px;
-  }
+.comment form p {
+  margin: 10px 0;
+}
 
-  .comment-list-content p {
-    font-size: 22px;
-    color: #000000;
-    font-family: Yu Gothic;
-    font-weight: bold;
-  }
+/* フィルターセクション */
+.filter {
+  flex: 1;
+  padding: 20px;
+  border-radius: 5px;
+}
 
-  .comment-list-content .like-btn {
-    width: 60px;
-    height: 40px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding: 5px 10px 10px ;
-    cursor: pointer;
-    border-radius: 3px;
-    font-size: 18px;
-  }
+.filter h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #333;
+}
 
-  .comment-list-content .like-btn:hover {
-    background-color: #d8d8d8;
-  }
+.filter form {
+  margin-top: 20px;
+}
 
-  .comment-list-content .like-cnt {
-    font-weight: bold;
+.filter .head {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
-  }
+.filter .head:hover {
+  background-color: #0056b3;
+}
 
-  .comment-list-content .error-message {
-    color: red;
-    margin-top: 5px;
-    font-size: 0.8em;
-  }
+.filter form p {
+  margin: 10px 0;
+}
+
+
+.list {
+  text-align: center;
+  background: #fff;
+  border: 2px solid #494949;
+  padding: 15px;
+  position: relative;
+  width: 80%;
+  margin: 25px auto;
+}
+.list::before,
+.list::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 16px 10px 0px;
+    position: absolute;
+    top: calc(50% - 10px);
+}
+.list::before {
+    border-color: transparent  #494949 transparent transparent;
+    left: -16px;
+}
+.list::after {
+    border-color: transparent #fff transparent transparent;
+    left: -12px;
+}
+
+/* リスト全体のスタイル */
+.comment-list {
+  list-style-type: none; /* リストのマーカーを削除 */
+  padding: 20px 20px 20px 20px;
+}
+
+/* 各コメント項目のスタイル */
+.comment-list-content {
+  margin-bottom: 20px; /* コメント項目の間隔 */
+  border: 1.8px solid  #494949; 
+  padding: 30px;
+  border-radius: 5px; 
+}
+
+.comment-list-content .img {
+  float: left; 
+  margin-right: 10px;
+}
+
+.comment-list-content .img img {
+  width: 130px; /* 画像の幅 */
+  height: 180px; /* 画像の高さ */
+  border-radius:10%; /* 画像を丸くする */
+}
+
+.comment-list-content .comment-info {
+  overflow: hidden; /* フロート解除 */
+}
+
+.comment-list-content h3 {
+  margin-top: 0;
+  font-size: 18px; 
+}
+
+.comment-list-content p {
+  margin: 5px 0; 
+}
+
+.comment-list-content .error-message {
+  color: red; /* エラーメッセージのテキスト色 */
+  margin-top: 5px; /* 上のマージン */
+  display: none; /* 最初は非表示 */
+}
+
+.head {
+  margin-top: 8px;
+  background-color: #007bff; /* ボタンの背景色 */
+  font-weight: bold;
+  color: #fff; /* ボタンのテキスト色 */
+  border: none; /* 枠線を削除 */
+  padding: 10px 20px; /* パディング */
+  cursor: pointer; /* カーソルをポインターに */
+  border-radius: 5px; /* 角丸 */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* アニメーションの設定 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 初期の影 */
+}
+
+.head:hover {
+  background-color: #0056b3; /* ホバー時の背景色 */
+  transform: translateX(3px); /* 少し上に移動 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ホバー時の影 */
+}
+
+.head:active {
+  transform: translateX(0); /* クリック時に移動を元に戻す */
+  box-shadow: none; /* クリック時に影を削除 */
+}
+
+.like-btn {
+  margin-top: 8px;
+  background-color: #007bff; /* ボタンの背景色 */
+  font-weight: bold;
+  color: #fff; /* ボタンのテキスト色 */
+  border: none; /* 枠線を削除 */
+  padding: 10px 20px; /* パディング */
+  cursor: pointer; /* カーソルをポインターに */
+  border-radius: 5px; /* 角丸 */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* アニメーションの設定 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 初期の影 */
+}
+
+.like-btn:hover {
+  background-color: #0056b3; /* ホバー時の背景色 */
+  transform: translateX(3px); /* 少し上に移動 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ホバー時の影 */
+}
+
+.like-btn:active{
+  transform: translateX(0); /* クリック時に移動を元に戻す */
+  box-shadow: none; /* クリック時に影を削除 */
+}
+
+
+

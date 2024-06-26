@@ -1,8 +1,14 @@
+ul {
+    text-align: center;
+}
+
 main {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
+    min-height: 100vh;
+    
 }
 
 main {
@@ -31,11 +37,6 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.book:hover {
-    transform: translateY(-30px);
 }
 
 .book a {
@@ -53,7 +54,7 @@ h1 {
 }
 
 .book-info {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -64,3 +65,30 @@ h1 {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.btn {
+    margin-bottom: 30px;
+    width: 60%;
+    height: 8%;
+    background-color: #65d869;
+    font-weight: bold;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative; 
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s; 
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+  /* ボタンのホバースタイル */
+  .btn:hover {
+    transform: scale(1.05); 
+  }
+  
+  /* ボタンのアクティブスタイル */
+  .btn:active {
+    transform: scale(0.95);
+  }

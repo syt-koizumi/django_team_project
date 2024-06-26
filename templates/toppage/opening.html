@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opening </title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="opening-animation">
+  <div class="image-container">
+    <img src="{% static 'img_folder/logo.jpg' %}" alt="Opening Image">
+  </div>
+  <h1 class="title">-映画の感動をずっと手元に-</h1>
+</div>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+}
+
+.opening-animation {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.image-container {
+  width: 100%;
+  max-width: 250px; /* 画像の最大幅を設定 */
+  opacity: 0;
+  animation: fadeInImage 2s ease forwards;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px; /* 画像に丸みを持たせる場合 */
+}
+
+.title {
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeInTitle 2s 1s forwards; /* タイトルの表示を遅延させる */
+}
+
+@keyframes fadeInImage {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInTitle {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  
+  const animationDuration = 3000; 
+  const delayBeforeRedirect = 1000; 
+
+  setTimeout(function() {
+    window.location.href = '{% url "toppage:toppage" %}';
+  }, animationDuration + delayBeforeRedirect);
+});
+</script>
+</body>
+</html>
