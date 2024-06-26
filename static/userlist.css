@@ -10,7 +10,8 @@
 }
 
   .user input[type="text"] {
-    width: 100%;
+    margin-top: 30px;
+    width: 90%;
     padding: 10px;
     margin-bottom: 20px;
     box-sizing: border-box;
@@ -52,6 +53,14 @@
     margin-top: 0;
     font-size: 20px;
     color: #333;
+  }
+
+  .but {
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+
   }
 
   
