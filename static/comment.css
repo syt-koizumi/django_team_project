@@ -204,6 +204,24 @@ hr {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 初期の影 */
 }
 
+.btn {
+  margin-top: 8px;
+  background-color: red; /* ボタンの背景色 */
+  font-weight: bold;
+  color: #fff; /* ボタンのテキスト色 */
+  border: none; /* 枠線を削除 */
+  padding: 10px 20px; /* パディング */
+  cursor: pointer; /* カーソルをポインターに */
+  border-radius: 5px; /* 角丸 */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* アニメーションの設定 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 初期の影 */
+}
+
+.btn a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .like-btn:hover {
   background-color: #0056b3; /* ホバー時の背景色 */
   transform: translateX(3px); /* 少し上に移動 */
@@ -211,6 +229,17 @@ hr {
 }
 
 .like-btn:active{
+  transform: translateX(0); /* クリック時に移動を元に戻す */
+  box-shadow: none; /* クリック時に影を削除 */
+}
+
+.btn:hover {
+  background-color: red; /* ホバー時の背景色 */
+  transform: translateX(3px); /* 少し上に移動 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ホバー時の影 */
+}
+
+.btn:active{
   transform: translateX(0); /* クリック時に移動を元に戻す */
   box-shadow: none; /* クリック時に影を削除 */
 }

@@ -42,7 +42,7 @@
             <div class="error-message" id="error-{{ comment.id }}"></div>
             {% if comment.user == user %}
             </a>
-              <button type="submit" class="btn"><a href = "{% url 'comment:delete' comment.id %}">削除</a></button>
+              <button type="submit" class="btn"><a href = "{% url 'comment:delete' comment.id %}">Delete</a></button>
             </a>
             {% endif %}
           </div>
