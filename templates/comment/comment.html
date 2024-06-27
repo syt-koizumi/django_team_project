@@ -34,7 +34,7 @@
           <div class="comment-info">
             <h3><a href="{% url 'movie:movie_detail' comment.movie_name %}">{{ comment.movie_name }}</a></h3>
             <p>ユーザー名：{{ comment.user }}</p>
-            <p>日時：{{ comment.date |date:"MD"}}</p>
+            <p>日時：{{ comment.date |date:"Md日"}}</p>
             <p>評価：{{ comment.get_rating_display }}</p>
             <p>{{ comment.comment }}</p>
             <button class="like-btn" data-id="{{ comment.id }}">Like</button>

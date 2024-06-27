@@ -12,11 +12,10 @@
 
   {% if users %}
     <h2>ー検索結果ー</h2>
-    <ul>
+    <div class="but">
       {% for user in users %}
-        <li><a href="{% url 'usersearch:other_user_movie' user.id %}">{{ user.username }}</a></li>
-      {% endfor %}
-    </ul>
+        <div class="but2"><a href="{% url 'usersearch:other_user_movie' user.id %}">{{ user.username }}</a></div>
+      {% endfor %}</div>
   {% endif %}
 </div>
 {% endblock %}
