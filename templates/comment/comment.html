@@ -40,6 +40,11 @@
             <button class="like-btn" data-id="{{ comment.id }}">Like</button>
             <p><span class="like-cnt" id="likes-{{ comment.id }}">{{ comment.likes }}</span> likes</p>
             <div class="error-message" id="error-{{ comment.id }}"></div>
+            {% if comment.user == user %}
+            </a>
+              <button type="submit" class="btn"><a href = "{% url 'comment:delete' comment.id %}">削除</a></button>
+            </a>
+            {% endif %}
           </div>
         </li>
         {% endfor %}

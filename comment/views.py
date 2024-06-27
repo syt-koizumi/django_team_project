@@ -1,7 +1,8 @@
 # views.py
-from django.http import JsonResponse
+from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import View
+from django.urls import reverse_lazy
+from django.views.generic import View, DeleteView
 from .models import Comment, Like
 from movie.models import MyMovieModel
 from .forms import CommentForm, MovieFilterForm
@@ -43,6 +44,24 @@ class CommentView(LoginRequiredMixin,View):
             'filter_form': filter_form,
             'comments': comments
         })
+
+class CommentDeleteView(LoginRequiredMixin, DeleteView):
+    model = Comment
+    template_name = 'comment/delete.html'
+    success_url = reverse_lazy('comment:comment')
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        # ログインユーザーのオブジェクトのみを返す
+        return queryset.filter(user=self.request.user, id=self.kwargs['pk'])
+
+    def get_object(self, queryset=None):
+        # 削除するオブジェクトを取得する
+        obj = super().get_object(queryset)
+        if obj is None:
+            # オブジェクトが存在しない場合は404エラーを返す
+            raise Http404("オブジェクトが見つかりません")
+        return obj
     
 def like_comment(request, comment_id):
     if request.method == "POST":
